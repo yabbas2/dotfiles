@@ -15,7 +15,7 @@ vim.opt.relativenumber = false       -- add numbers to each line on the left sid
 vim.opt.cursorline = true           -- highlight cursor line underneath the cursor horizontally
 vim.opt.splitbelow = true           -- open new vertical split bottom
 vim.opt.splitright = true           -- open new horizontal splits right
--- vim.opt.termguicolors = true        -- enabl 24-bit RGB color in the TUI
+vim.opt.termguicolors = true        -- enable 24-bit RGB color in the TUI
 vim.opt.showmode = false            -- we are experienced, wo don't need the "-- INSERT --" mode hint
 
 -- Searching

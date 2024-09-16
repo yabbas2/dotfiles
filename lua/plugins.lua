@@ -12,12 +12,9 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-    -- colorscheme
     "catppuccin/nvim",
-    -- auto-completion engine
     {
         "hrsh7th/nvim-cmp",
-        -- event = 'InsertEnter',
         event = "VeryLazy",
         dependencies = {
             "hrsh7th/cmp-nvim-lsp",
@@ -31,13 +28,25 @@ require("lazy").setup({
             require("config.nvim-cmp")
         end,
     },
-    -- Code snippet engine
     {
         "L3MON4D3/LuaSnip",
         version = "v2.*",
     },
-    -- LSP manager
 	"williamboman/mason.nvim",
 	"williamboman/mason-lspconfig.nvim",
 	"neovim/nvim-lspconfig",
+    {
+        'nvim-telescope/telescope.nvim', tag = '0.1.8',
+        dependencies = { 'nvim-lua/plenary.nvim' },
+        config = function ()
+           require('config.nvim-telescope')
+        end
+    },
+    {
+        "nvim-treesitter/nvim-treesitter",
+        build = ":TSUpdate",
+        config = function ()
+            require('config.nvim-treesitter')
+        end
+    },
 })
