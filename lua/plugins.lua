@@ -37,7 +37,10 @@ require("lazy").setup({
 	"neovim/nvim-lspconfig",
     {
         'nvim-telescope/telescope.nvim', tag = '0.1.8',
-        dependencies = { 'nvim-lua/plenary.nvim' },
+        dependencies = {
+            'nvim-lua/plenary.nvim',
+            "nvim-telescope/telescope-live-grep-args.nvim"
+        },
         config = function ()
            require('config.nvim-telescope')
         end
@@ -49,4 +52,24 @@ require("lazy").setup({
             require('config.nvim-treesitter')
         end
     },
+    {
+        "nvim-tree/nvim-tree.lua",
+        event = "VeryLazy",
+        dependencies = {
+            "nvim-tree/nvim-web-devicons",
+        },
+        config = function ()
+            require('config.nvim-tree')
+        end
+    },
+    {
+        'akinsho/bufferline.nvim',
+        version = "*",
+        dependencies = {
+            'nvim-tree/nvim-web-devicons',
+        },
+        config = function ()
+            require('config.bufferline')
+        end
+    }
 })
