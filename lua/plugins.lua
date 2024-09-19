@@ -12,73 +12,14 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-    "catppuccin/nvim",
-    {
-        "hrsh7th/nvim-cmp",
-        event = "VeryLazy",
-        dependencies = {
-            "hrsh7th/cmp-nvim-lsp",
-            "onsails/lspkind-nvim",
-            "hrsh7th/cmp-path",
-            "hrsh7th/cmp-buffer",
-            "hrsh7th/cmp-omni",
-            "hrsh7th/cmp-cmdline"
-        },
-        config = function()
-            require("config.nvim-cmp")
-        end,
-    },
-    {
-        "L3MON4D3/LuaSnip",
-        version = "v2.*",
-    },
-	"williamboman/mason.nvim",
-	"williamboman/mason-lspconfig.nvim",
-	"neovim/nvim-lspconfig",
-    {
-        'nvim-telescope/telescope.nvim', tag = '0.1.8',
-        dependencies = {
-            'nvim-lua/plenary.nvim',
-            "nvim-telescope/telescope-live-grep-args.nvim"
-        },
-        config = function ()
-           require('config.nvim-telescope')
-        end
-    },
-    {
-        "nvim-treesitter/nvim-treesitter",
-        build = ":TSUpdate",
-        config = function ()
-            require('config.nvim-treesitter')
-        end
-    },
-    {
-        "nvim-tree/nvim-tree.lua",
-        event = "VeryLazy",
-        dependencies = {
-            "nvim-tree/nvim-web-devicons",
-        },
-        config = function ()
-            require('config.nvim-tree')
-        end
-    },
-    {
-        'akinsho/bufferline.nvim',
-        version = "*",
-        dependencies = {
-            'nvim-tree/nvim-web-devicons',
-        },
-        config = function ()
-            require('config.bufferline')
-        end
-    },
-    {
-        'nvim-lualine/lualine.nvim',
-        dependencies = {
-            'nvim-tree/nvim-web-devicons'
-        },
-        config = function ()
-            require('config.lualine')
-        end
+   spec = {
+        require('plugins.bufferline'),
+        require('plugins.catppuccin'),
+        require('plugins.cmp'),
+        require('plugins.lsp'),
+        require('plugins.lualine'),
+        require('plugins.nvimtree'),
+        require('plugins.telescope'),
+        require('plugins.treesitter'),
     }
 })
