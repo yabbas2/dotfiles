@@ -107,6 +107,7 @@ return {
             keymap('n', '<Leader>db', function() dap.toggle_breakpoint() end, opts)
             keymap("n", '<Leader>dq', function() dap.terminate( { cb = dapui.close() } ) end, opts)
             keymap('n', '<Leader>dr', function() dap.run_to_cursor() end, opts)
+            keymap('n', '<Leader>dR', function() dap.restart() end, opts)
             keymap("n", '<Leader>dw', function() dapui.elements.watches.add(vim.fn.expand("<cword>")) end, opts)
             -- keymap("n", "<Leader>dw", "<CMD>lua require('dapui').float_element('watches', { enter = true })<CR>", opts)
             -- keymap("n", "<Leader>ds", "<CMD>lua require('dapui').float_element('scopes', { enter = true })<CR>", opts)

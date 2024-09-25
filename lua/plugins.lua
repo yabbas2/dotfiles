@@ -23,6 +23,7 @@ require("lazy").setup({
         require('plugins.nvimtree'),
         require('plugins.telescope'),
         require('plugins.treesitter'),
+        require('plugins.ibl'),
     },
     rocks = { enabled = false },
 })

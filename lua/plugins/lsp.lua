@@ -26,6 +26,9 @@ return {
         "neovim/nvim-lspconfig",
         config = function ()
             local lspconfig = require("lspconfig")
+            local opts = { noremap = true, silent = true }
+
+            vim.keymap.set('n', '<Leader>rw', function () vim.lsp.buf.rename() end, opts)
 
             local custom_attach = function(client, bufnr)
             end
