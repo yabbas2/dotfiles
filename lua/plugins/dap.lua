@@ -4,32 +4,12 @@ return {
         dependencies = {
             "rcarriga/nvim-dap-ui",
             "nvim-neotest/nvim-nio",
-            -- "theHamsta/nvim-dap-virtual-text",
-            "LiadOz/nvim-dap-repl-highlights",
         },
         config = function ()
             local dapui = require('dapui')
             local dap = require("dap")
-            -- local dapvt = require('nvim-dap-virtual-text')
-            local daphl = require('nvim-dap-repl-highlights')
             local keymap = vim.keymap.set
             local opts = { noremap = true, silent = true }
-
-            ---- DAP virtual text ----
-            -- dapvt.setup({
-            --     enabled = true,
-            --     enabled_commands = true,
-            --     highlight_changed_variables = true,
-            --     highlight_new_as_changed = false,
-            --     show_stop_reason = true,
-            --     commented = false,
-            --     only_first_definition = true,
-            --     all_references = false,
-            --     virt_text_pos = "eol",
-            --     all_frames = false,
-            --     virt_lines = false,
-            --     virt_text_win_col = nil,
-            -- })
 
             ---- DAP ui ----
             dapui.setup({
@@ -55,7 +35,6 @@ return {
                 layouts = {
                     {
                         elements = {
-                            -- Elements can be strings or table with id and size keys.
                             { id = "scopes", size = 0.25 },
                             "watches",
                             "breakpoints",
@@ -74,8 +53,8 @@ return {
                     },
                 },
                 floating = {
-                    max_height = nil,                             -- These can be integers or a float between 0 and 1.
-                    max_width = nil,                              -- Floats will be treated as percentage of your screen.
+                    max_height = nil,  -- These can be integers or a float between 0 and 1.
+                    max_width = nil,   -- Floats will be treated as percentage of your screen.
                     border = "single", -- Border style. Can be "single", "double" or "rounded"
                     mappings = {
                         close = { "q", "<Esc>" },
@@ -88,12 +67,10 @@ return {
             })
 
             ---- DAP ----
-
             dap.set_log_level("TRACE")
             dap.listeners.before.launch.dapui = function()
                 dapui.open()
             end
-            vim.g.dap_virtual_text = true
 
             ---- Icons ----
             vim.fn.sign_define("DapBreakpoint", { text = "🔴", texthl = "", linehl = "", numhl = "" })
@@ -112,10 +89,6 @@ return {
             -- keymap("n", "<Leader>dw", "<CMD>lua require('dapui').float_element('watches', { enter = true })<CR>", opts)
             -- keymap("n", "<Leader>ds", "<CMD>lua require('dapui').float_element('scopes', { enter = true })<CR>", opts)
             -- keymap("n", "<Leader>dr", "<CMD>lua require('dapui').float_element('repl', { enter = true })<CR>", opts)
-
-            ---- DAP highlights ----
-            daphl.setup()
-
 
             ---- DAP language adapters ----
             dap.adapters.cppdbg = {
