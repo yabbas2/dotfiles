@@ -28,9 +28,8 @@ return {
             local lspconfig = require("lspconfig")
             local opts = { noremap = true, silent = true }
 
-            vim.keymap.set('n', '<Leader>rw', function () vim.lsp.buf.rename() end, opts)
-
             local custom_attach = function(client, bufnr)
+                vim.keymap.set('n', '<Leader>rw', function () vim.lsp.buf.rename() end, opts)
             end
 
             lspconfig.pylsp.setup {
