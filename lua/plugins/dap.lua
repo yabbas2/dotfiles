@@ -94,8 +94,22 @@ return {
             dap.adapters.cppdbg = {
                 id = 'cppdbg',
                 type = 'executable',
-                command = '/home/yabbas/hmatools/extension/debugAdapters/bin/OpenDebugAD7',
+                command = os.getenv('HOME') .. '/.vscode/extensions/ms-vscode-cpptools/debugAdapters/bin/OpenDebugAD7',
             }
+
+            dap.adapters.python = function(cb, config)
+                cb({
+                    type = 'executable',
+                    command = os.getenv('HOME') .. '/.pyvenv/bin/python',
+                    args = { '-m', 'debugpy.adapter' },
+                    options = {
+                        source_filetype = 'python',
+                    },
+                })
+            end
+            dap.configurations.python = {}
+            -- load .vscode/launch.json (default path is root dir)
+            -- require('dap.ext.vscode').load_launchjs()
         end
     }
 }
