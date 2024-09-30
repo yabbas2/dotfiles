@@ -5,7 +5,11 @@ return {
     opts = {},
     config = function()
         local ufo = require("ufo")
-        ufo.setup()
+        ufo.setup({
+            provider_selector = function(bufnr, filetype, buftype)
+                return {'treesitter', 'indent'}
+            end
+        })
 
         vim.keymap.set("n", "zR", function() ufo.openAllFolds() end)
         vim.keymap.set("n", "zM", function() ufo.closeAllFolds() end)

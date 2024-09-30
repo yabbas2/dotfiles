@@ -14,8 +14,8 @@ vim.keymap.set('n', 'K', ':resize +2<CR>', opts)
 vim.keymap.set('n', 'H', ':vertical resize -2<CR>', opts)
 vim.keymap.set('n', 'L', ':vertical resize +2<CR>', opts)
 
-vim.keymap.set('n', 'M', ':bnext<CR>', opts)
-vim.keymap.set('n', 'N', ':bprevious<CR>', opts)
+vim.keymap.set('n', 'b]', ':bnext<CR>', opts)
+vim.keymap.set('n', 'b[', ':bprevious<CR>', opts)
 
 vim.keymap.set("v", "<M-j>", ":m .+1<CR>==", { desc = 'Move text down' })
 vim.keymap.set("v", "<M-k>", ":m .-2<CR>==", { desc = 'Move text up' })
