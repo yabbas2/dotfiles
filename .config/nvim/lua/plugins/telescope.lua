@@ -30,6 +30,12 @@ return {
                     },
                 }
             },
+            pickers = {
+                buffers = { initial_mode = "normal", theme = "dropdown", previewer = false },
+                lsp_references = { initial_mode = "normal" },
+                lsp_definitions = { initial_mode = "normal" },
+                lsp_document_symbols = { initial_mode = "normal" },
+            },
         }
 
         telescope.load_extension("live_grep_args")
@@ -44,5 +50,6 @@ return {
         vim.keymap.set('v', '<Leader>flv', live_grep_args_shortcuts.grep_word_visual_selection_current_buffer, {})
         vim.keymap.set('n', '<Leader>fw', live_grep_args_shortcuts.grep_word_under_cursor, {})
         vim.keymap.set('n', '<Leader>flw', live_grep_args_shortcuts.grep_word_under_cursor_current_buffer, {})
+        vim.keymap.set('n', '<Leader>fa', "<CMD>Telescope session-lens<CR>", {})
     end
 }

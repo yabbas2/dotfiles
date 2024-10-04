@@ -13,18 +13,20 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
    spec = {
-        require('plugins.bufferline'),
-        require('plugins.catppuccin'),
+        require('plugins.autosession'),
+        require('plugins.cyberdream'),
         require('plugins.cmp'),
         require('plugins.gitsigns'),
         require('plugins.ibl'),
         require('plugins.lualine'),
         require('plugins.markdown'),
         require('plugins.mason'),
+        require('plugins.notify'),
         require('plugins.nvimtree'),
         require('plugins.overseer'),
         require('plugins.surround'),
         require('plugins.telescope'),
+        require('plugins.tmux'),
         require('plugins.treesitter'),
         require('plugins.ufo'),
         require('plugins.whitespace'),

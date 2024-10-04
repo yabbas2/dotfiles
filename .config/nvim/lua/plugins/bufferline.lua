@@ -7,12 +7,16 @@ return {
     config = function ()
         require("bufferline").setup{
             options = {
-                right_mouse_command = false,
-                middle_mouse_command = "bdelete! %d",
+                mode = "tabs",
+                show_buffer_close_icons = false,
+                show_close_icon = false,
+                right_mouse_command  = "",
+                middle_mouse_command = "",
+                left_mouse_command   = "",
                 offsets = {
                     {
                         filetype = "NvimTree",
-                        text = "File Explorer",
+                        text = "NvimTree",
                         text_align = "center",
                         separator = false,
                     }

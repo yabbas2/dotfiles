@@ -11,7 +11,7 @@ return {
             green        = '#09F7A0',
             blue         = '#25B2BC',
             yellow       = '#F09383',
-            gray         = '#E95678',
+            gray         = '#9340cf',
             darkgray     = '#1A1C23',
             lightgray    = '#2E303E',
             inactivegray = '#1C1E26',
@@ -54,6 +54,18 @@ return {
                 theme  = lualine_theme,
             },
             sections = {
+                lualine_b = {
+                    'branch',
+                    {
+                        "diagnostics",
+                        symbols = {
+                            error = " ",
+                            warn = " ",
+                            info = " ",
+                            hint = "󰝶 ",
+                        },
+                    },
+                },
                 lualine_c = { { 'filename', path = 2 } },
             },
             extensions = { 'nvim-tree', 'nvim-dap-ui' }

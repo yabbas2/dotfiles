@@ -1,5 +1,11 @@
 return {
     {
+        "onsails/lspkind-nvim",
+        config = function ()
+           require('lspkind').setup()
+        end
+    },
+    {
         "hrsh7th/nvim-cmp",
         event = "VeryLazy",
         dependencies = {
@@ -19,29 +25,19 @@ return {
 
             local luasnip = require("luasnip")
             local cmp = require("cmp")
+            local lspkind = require('lspkind')
 
             cmp.setup({
                 snippet = {
-                    -- REQUIRED - you must specify a snippet engine
                     expand = function(args)
-                        require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+                        luasnip.lsp_expand(args.body)
                     end,
                 },
                 mapping = cmp.mapping.preset.insert({
-                    -- Use <C-b/f> to scroll the docs
                     ['<C-b>'] = cmp.mapping.scroll_docs( -4),
                     ['<C-f>'] = cmp.mapping.scroll_docs(4),
-                    -- Use <C-k/j> to switch in items
-                    ['<C-k>'] = cmp.mapping.select_prev_item(),
-                    ['<C-j>'] = cmp.mapping.select_next_item(),
-                    -- Use <CR>(Enter) to confirm selection
-                    -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
                     ['<CR>'] = cmp.mapping.confirm({ select = true }),
-
-                    -- A super tab
-                    -- sourc: https://github.com/hrsh7th/nvim-cmp/wiki/Example-mappings#luasnip
                     ["<Tab>"] = cmp.mapping(function(fallback)
-                        -- Hint: if the completion menu is visible select next one
                         if cmp.visible() then
                             cmp.select_next_item()
                         elseif has_words_before() then
@@ -49,7 +45,7 @@ return {
                         else
                             fallback()
                         end
-                    end, { "i", "s" }), -- i - insert mode; s - select mode
+                    end, { "i", "s" }),
                     ["<S-Tab>"] = cmp.mapping(function(fallback)
                         if cmp.visible() then
                             cmp.select_prev_item()
@@ -60,40 +56,63 @@ return {
                         end
                     end, { "i", "s" }),
                 }),
-
-                -- Let's configure the item's appearance
-                -- source: https://github.com/hrsh7th/nvim-cmp/wiki/Menu-Appearance
                 formatting = {
-                    -- Set order from left to right
-                    -- kind: single letter indicating the type of completion
-                    -- abbr: abbreviation of "word"; when not empty it is used in the menu instead of "word"
-                    -- menu: extra text for the popup menu, displayed after "word" or "abbr"
-                    fields = { 'abbr', 'menu' },
-
-                    -- customize the appearance of the completion menu
-                    format = function(entry, vim_item)
-                        vim_item.menu = ({
+                    format = lspkind.cmp_format({
+                        mode = "symbol_text",
+                        menu = ({
                             nvim_lsp = '[Lsp]',
                             luasnip = '[Luasnip]',
                             buffer = '[File]',
                             path = '[Path]',
-                        })[entry.source.name]
-                        return vim_item
-                    end,
+                        })
+                    }),
                 },
-
-                -- Set source precedence
                 sources = cmp.config.sources({
                     { name = 'nvim_lsp' },    -- For nvim-lsp
                     { name = 'luasnip' },     -- For luasnip user
                     { name = 'buffer' },      -- For buffer word completion
                     { name = 'path' },        -- For path completion
-                })
+                }),
+                window = {
+                    completion = {
+                        border = {
+                            { "󱐋", "WarningMsg" },
+                            { "─", "Comment" },
+                            { "╮", "Comment" },
+                            { "│", "Comment" },
+                            { "╯", "Comment" },
+                            { "─", "Comment" },
+                            { "╰", "Comment" },
+                            { "│", "Comment" },
+                        },
+                        scrollbar = false,
+                        winblend = 0,
+                    },
+                    documentation = {
+                        border = {
+                            { "󰙎", "DiagnosticHint" },
+                            { "─", "Comment" },
+                            { "╮", "Comment" },
+                            { "│", "Comment" },
+                            { "╯", "Comment" },
+                            { "─", "Comment" },
+                            { "╰", "Comment" },
+                            { "│", "Comment" },
+                        },
+                        scrollbar = false,
+                        winblend = 0,
+                    },
+                }
             })
         end,
     },
     {
         "L3MON4D3/LuaSnip",
         version = "v2.*",
+        opts = {
+            history = true,
+            region_check_events = "InsertEnter",
+            delete_check_events = "TextChanged,InsertLeave",
+        },
     },
 }
