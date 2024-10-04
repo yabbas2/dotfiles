@@ -1,2 +1,9 @@
+# Ignore
+*
 lazy-lock.json
 .DS_Store
+
+# Include
+!.config/
+!.zshrc
+!README.md

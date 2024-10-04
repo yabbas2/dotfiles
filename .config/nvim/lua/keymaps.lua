@@ -9,8 +9,8 @@ vim.keymap.set('n', '<C-j>', '<C-w>j', opts)
 vim.keymap.set('n', '<C-k>', '<C-w>k', opts)
 vim.keymap.set('n', '<C-l>', '<C-w>l', opts)
 
-vim.keymap.set('n', '<M-]>', ':bnext<CR>', opts)
-vim.keymap.set('n', '<M-[>', ':bprevious<CR>', opts)
+-- vim.keymap.set('n', '<M-]>', ':bnext<CR>', opts)
+-- vim.keymap.set('n', '<M-[>', ':bprevious<CR>', opts)
 
 vim.keymap.set("v", "<Leader>j", ":m .+1<CR>==", { desc = 'Move text down' })
 vim.keymap.set("v", "<Leader>k", ":m .-2<CR>==", { desc = 'Move text up' })
