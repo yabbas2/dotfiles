@@ -1,7 +1,13 @@
-# NeoVim Configuration
+# Dotfiles 
 
 ## Dependencies
 
 * fd
 * ripgrep
-* vscode-cpp
+* stow
+* tmux
+* tpm
+* kitty
+* lazygit
+* neovim
+* oh-my-zsh
