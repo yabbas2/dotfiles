@@ -93,8 +93,6 @@ source $ZSH/oh-my-zsh.sh
 
 # Compilation flags
 # export ARCHFLAGS="-arch $(uname -m)"
-export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
-PATH=$PATH:$(ruby -e 'puts Gem.bindir')
 
 # Set personal aliases, overriding those provided by Oh My Zsh libs,
 # plugins, and themes. Aliases can be placed here, though Oh My Zsh
@@ -107,5 +105,13 @@ PATH=$PATH:$(ruby -e 'puts Gem.bindir')
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias ls='colorls'
 alias vim='nvim'
+
+# OS-dependent configuration
+if [[ $(uname) == "Darwin" ]]; then
+    source "$ZSH_CUSTOM"/os/darwin.zsh
+elif [[ $(uname) == "Linux" ]]; then
+    source "$ZSH_CUSTOM"/os/linux.zsh
+else
+    echo 'Unknown OS!'
+fi
