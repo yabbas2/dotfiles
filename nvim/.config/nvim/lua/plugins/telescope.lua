@@ -17,6 +17,9 @@ return {
                     i = {
                         ["<C-Down>"] = actions.cycle_history_next,
                         ["<C-Up>"] = actions.cycle_history_prev,
+                    },
+                    n = {
+                        ["<C-D>"] = actions.delete_buffer,
                     }
                 },
             },

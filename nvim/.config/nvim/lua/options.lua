@@ -31,6 +31,8 @@ vim.opt.smartcase = true            -- but make it case sensitive if an uppercas
 
 -- Misc
 vim.g.mapleader = ' '
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
 
 -- Folding
 vim.o.foldcolumn = "1"

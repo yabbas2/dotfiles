@@ -87,6 +87,9 @@ return {
             lspconfig.jedi_language_server.setup {
                 capabilities = capabilities,
                 on_attach = custom_attach,
+                settings = {
+                    diagnostics = { enable = true, },
+                },
             }
 
             lspconfig.clangd.setup {

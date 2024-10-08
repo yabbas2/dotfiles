@@ -10,10 +10,10 @@ return {
 
         nvim_tree.setup {
             auto_reload_on_write = true,
-            disable_netrw = false,
-            hijack_netrw = true,
+            -- disable_netrw = false,
+            -- hijack_netrw = true,
             hijack_cursor = false,
-            hijack_unnamed_buffer_when_opening = false,
+            -- hijack_unnamed_buffer_when_opening = false,
             open_on_tab = true,
             sort_by = "name",
             update_cwd = false,
@@ -27,7 +27,7 @@ return {
             },
             renderer = {
                 indent_markers = {
-                    enable = false,
+                    enable = true,
                     icons = {
                         corner = "└ ",
                         edge = "│ ",
@@ -68,7 +68,7 @@ return {
             },
             git = {
                 enable = true,
-                ignore = true,
+                ignore = false,
                 timeout = 400,
             },
             actions = {
