@@ -29,3 +29,5 @@ vim.keymap.set("n", "<M-l>", '<Cmd>lua require("tmux").resize_right()<CR>', { si
 
 vim.keymap.set("n", "sh", ":vsplit<Return>", opts)
 vim.keymap.set("n", "sv", ":split<Return>", opts)
+
+vim.keymap.set("n", "<Leader>hh", '<Cmd>set hlsearch!<CR>', { silent = true })
