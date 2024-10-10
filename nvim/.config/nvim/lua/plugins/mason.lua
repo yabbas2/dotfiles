@@ -55,7 +55,7 @@ return {
             local custom_attach = function(client, bufnr)
                 vim.keymap.set('n', '<Leader>rw', function () vim.lsp.buf.rename() end, opts)
                 vim.keymap.set('n', '<Leader>ss', function () vim.lsp.buf.hover() end, opts)
-                client.server_capabilities.semanticTokensProvider = nil
+                -- client.server_capabilities.semanticTokensProvider = nil
             end
 
             vim.lsp.handlers["textDocument/hover"] = function(_, result, ctx, config)

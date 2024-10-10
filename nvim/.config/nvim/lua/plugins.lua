@@ -14,7 +14,7 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
    spec = {
         require('plugins.autosession'),
-        require('plugins.cyberdream'),
+        require('plugins.catppuccin'),
         require('plugins.cmp'),
         require('plugins.gitsigns'),
         require('plugins.ibl'),
