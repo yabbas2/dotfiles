@@ -102,9 +102,7 @@ return {
                 on_attach = custom_attach,
                 settings = {
                     ['rust-analyzer'] = {
-                        diagnostics = {
-                            enable = false;
-                        }
+                        diagnostics = { enable = false }
                     }
                 }
             }
@@ -114,18 +112,10 @@ return {
                 on_attach = custom_attach,
                 settings = {
                     Lua = {
-                        runtime = {
-                            version = "LuaJIT",
-                        },
-                        diagnostics = {
-                            globals = { "vim" },
-                        },
-                        workspace = {
-                            library = vim.api.nvim_get_runtime_file("", true),
-                        },
-                        telemetry = {
-                            enable = false,
-                        },
+                        runtime = { version = "LuaJIT", },
+                        diagnostics = { globals = { "vim" }, },
+                        workspace = { library = vim.api.nvim_get_runtime_file("", true), },
+                        telemetry = { enable = false, },
                     },
                 },
             }

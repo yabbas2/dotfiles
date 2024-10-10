@@ -5,53 +5,37 @@ return {
     },
     config = function ()
         local colors = {
-            black        = '#1c1e26',
-            white        = '#6C6F93',
-            red          = '#F43E5C',
-            green        = '#09F7A0',
-            blue         = '#25B2BC',
-            yellow       = '#F09383',
-            gray         = '#9340cf',
-            darkgray     = '#1A1C23',
-            lightgray    = '#2E303E',
-            inactivegray = '#1C1E26',
-        }
-        local lualine_theme = {
-            normal = {
-                a = {bg = colors.gray, fg = colors.black, gui = 'bold'},
-                b = {bg = colors.lightgray, fg = colors.white},
-                c = {bg = colors.darkgray, fg = colors.white},
-            },
-            insert = {
-                a = {bg = colors.blue, fg = colors.black, gui = 'bold'},
-                b = {bg = colors.lightgray, fg = colors.white},
-                c = {bg = colors.darkgray, fg = colors.white}
-            },
-            visual = {
-                a = {bg = colors.yellow, fg = colors.black, gui = 'bold'},
-                b = {bg = colors.lightgray, fg = colors.white},
-                c = {bg = colors.darkgray, fg = colors.white}
-            },
-            replace = {
-                a = {bg = colors.red, fg = colors.black, gui = 'bold'},
-                b = {bg = colors.lightgray, fg = colors.white},
-                c = {bg = colors.darkgray, fg = colors.white}
-            },
-            command = {
-                a = {bg = colors.green, fg = colors.black, gui = 'bold'},
-                b = {bg = colors.lightgray, fg = colors.white},
-                c = {bg = colors.darkgray, fg = colors.white}
-            },
-            inactive = {
-                a = {bg = colors.inactivegray, fg = colors.lightgray, gui = 'bold'},
-                b = {bg = colors.inactivegray, fg = colors.lightgray},
-                c = {bg = colors.inactivegray, fg = colors.lightgray}
-            }
+            blue   = '#80a0ff',
+            cyan   = '#79dac8',
+            black  = '#080808',
+            white  = '#c6c6c6',
+            red    = '#ff5189',
+            violet = '#d183e8',
+            grey   = '#303030',
         }
 
+        local bubbles_theme = {
+            normal = {
+                a = { fg = colors.black, bg = colors.violet },
+                b = { fg = colors.white, bg = colors.grey },
+                c = { fg = colors.white },
+            },
+
+            insert = { a = { fg = colors.black, bg = colors.blue } },
+            visual = { a = { fg = colors.black, bg = colors.cyan } },
+            replace = { a = { fg = colors.black, bg = colors.red } },
+
+            inactive = {
+                a = { fg = colors.white, bg = colors.black },
+                b = { fg = colors.white, bg = colors.black },
+                c = { fg = colors.white },
+            },
+        }
         require('lualine').setup {
             options = {
-                theme  = lualine_theme,
+                theme  = bubbles_theme,
+                component_separators = '',
+                section_separators = { left = '', right = '' },
             },
             sections = {
                 lualine_b = {
@@ -67,6 +51,14 @@ return {
                     },
                 },
                 lualine_c = { { 'filename', path = 2 } },
+            },
+            inactive_sections = {
+                lualine_a = { 'filename' },
+                lualine_b = {},
+                lualine_c = {},
+                lualine_x = {},
+                lualine_y = {},
+                lualine_z = { 'location' },
             },
             extensions = { 'nvim-tree', 'nvim-dap-ui' }
         }
