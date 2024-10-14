@@ -54,5 +54,6 @@ return {
         vim.keymap.set('n', '<Leader>fw', live_grep_args_shortcuts.grep_word_under_cursor, {})
         vim.keymap.set('n', '<Leader>flw', live_grep_args_shortcuts.grep_word_under_cursor_current_buffer, {})
         vim.keymap.set('n', '<Leader>fa', "<CMD>Telescope session-lens<CR>", {})
+        vim.keymap.set('n', '<Leader>ft', "<CMD>TodoTelescope<CR>", {})
     end
 }

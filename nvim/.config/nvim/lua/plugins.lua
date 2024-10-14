@@ -28,6 +28,7 @@ require("lazy").setup({
         require('plugins.telescope'),
         require('plugins.textcase'),
         require('plugins.tmux'),
+        require('plugins.todo'),
         require('plugins.treesitter'),
         require('plugins.ufo'),
         require('plugins.whitespace'),
