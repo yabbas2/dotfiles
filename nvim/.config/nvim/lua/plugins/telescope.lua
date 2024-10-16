@@ -22,6 +22,7 @@ return {
                         ["<C-D>"] = actions.delete_buffer,
                     }
                 },
+                layout_strategy = 'vertical',
             },
             extensions = {
                 live_grep_args = {
@@ -34,16 +35,17 @@ return {
                 }
             },
             pickers = {
-                buffers = { initial_mode = "normal", theme = "dropdown", previewer = false },
+                find_files = { initial_mode = "insert" },
+                buffers = { initial_mode = "normal", previewer = false, theme = "dropdown"},
                 lsp_references = { initial_mode = "normal" },
                 lsp_definitions = { initial_mode = "normal" },
-                lsp_document_symbols = { initial_mode = "normal" },
+                lsp_document_symbols = { initial_mode = "insert" },
             },
         }
 
         telescope.load_extension("live_grep_args")
 
-        vim.keymap.set('n', '<Leader>ff', function() builtin.find_files() end, {})
+        vim.keymap.set('n', '<Leader>ff', function() builtin.find_files({ no_ignore = true }) end, {})
         vim.keymap.set('n', '<Leader>fb', function() builtin.buffers() end, {})
         vim.keymap.set('n', '<Leader>fs', function() builtin.lsp_document_symbols() end, {})
         vim.keymap.set('n', '<Leader>fd', function() builtin.lsp_definitions() end, {})

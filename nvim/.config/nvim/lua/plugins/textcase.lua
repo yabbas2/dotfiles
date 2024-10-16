@@ -31,6 +31,9 @@ return {
         vim.keymap.set("n", "gas",function () textcase.lsp_rename('to_snake_case') end, opts)
         vim.keymap.set("n", "gac",function () textcase.lsp_rename('to_camel_case') end, opts)
         vim.keymap.set("n", "gap",function () textcase.lsp_rename('to_pascal_case') end, opts)
+        vim.keymap.set("n", "gaws",function () textcase.current_word('to_snake_case') end, opts)
+        vim.keymap.set("n", "gawc",function () textcase.current_word('to_camel_case') end, opts)
+        vim.keymap.set("n", "gawp",function () textcase.current_word('to_pascal_case') end, opts)
     end,
     lazy = false,
 }
