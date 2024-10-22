@@ -17,7 +17,7 @@ return {
         "williamboman/mason-lspconfig.nvim",
         config = function ()
             require('mason-lspconfig').setup({
-                ensure_installed = { 'jedi_language_server', 'lua_ls', 'rust_analyzer', 'clangd', 'lemminx' },
+                ensure_installed = { 'pylsp', 'lua_ls', 'rust_analyzer', 'clangd', 'lemminx' },
             })
         end
     },
@@ -54,7 +54,6 @@ return {
 
             local custom_attach = function(client, bufnr)
                 vim.keymap.set('n', '<Leader>rw', function () vim.lsp.buf.rename() end, opts)
-                vim.keymap.set('n', '<Leader>ss', function () vim.lsp.buf.hover() end, opts)
                 -- client.server_capabilities.semanticTokensProvider = nil
             end
 
@@ -84,12 +83,23 @@ return {
                 return vim.lsp.util.open_floating_preview(markdown_lines, "markdown", config)
             end
 
-            lspconfig.jedi_language_server.setup {
+            lspconfig.pylsp.setup {
                 capabilities = capabilities,
                 on_attach = custom_attach,
                 settings = {
-                    diagnostics = { enable = true, },
-                },
+                    pylsp = {
+                        plugins = {
+                            rope_autoimport = { enabled = false, },
+                            pycodestyle = { ignore = { 'E501', 'W503' } },
+                            black = { enabled = false },
+                            autopep8 = { enabled = false },
+                            yapf = { enabled = false },
+                            pylint = { enabled = false },
+                            pyflakes = { enabled = false },
+                            flake8 = { enabled = false },
+                        }
+                    },
+                }
             }
 
             lspconfig.clangd.setup {
@@ -100,11 +110,6 @@ return {
             lspconfig.rust_analyzer.setup {
                 capabilities = capabilities,
                 on_attach = custom_attach,
-                settings = {
-                    ['rust-analyzer'] = {
-                        diagnostics = { enable = false }
-                    }
-                }
             }
 
             lspconfig.lua_ls.setup {

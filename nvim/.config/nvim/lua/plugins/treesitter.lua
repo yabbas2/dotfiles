@@ -30,6 +30,8 @@ return {
                             ["id"] = "@conditional.inner",
                             ["al"] = "@loop.outer",
                             ["il"] = "@loop.inner",
+                            ["ap"] = "@parameter.outer",
+                            ["ip"] = "@parameter.inner",
                         },
                         include_surrounding_whitespace = true,
                     },
