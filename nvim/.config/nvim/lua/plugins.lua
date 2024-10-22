@@ -21,6 +21,7 @@ require("lazy").setup({
         require('plugins.lualine'),
         require('plugins.markdown'),
         require('plugins.mason'),
+        require('plugins.navic'),
         require('plugins.notify'),
         require('plugins.nvimtree'),
         require('plugins.overseer'),

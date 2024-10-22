@@ -1,7 +1,8 @@
 return {
     'nvim-lualine/lualine.nvim',
     dependencies = {
-        'nvim-tree/nvim-web-devicons'
+        "nvim-tree/nvim-web-devicons",
+        "SmiteshP/nvim-navic",
     },
     config = function ()
         local colors = {
@@ -13,7 +14,6 @@ return {
             violet = '#d183e8',
             grey   = '#303030',
         }
-
         local bubbles_theme = {
             normal = {
                 a = { fg = colors.black, bg = colors.violet },
@@ -31,6 +31,7 @@ return {
                 c = { fg = colors.white },
             },
         }
+
         require('lualine').setup {
             options = {
                 theme  = bubbles_theme,
@@ -60,7 +61,14 @@ return {
                 lualine_y = {},
                 lualine_z = { 'location' },
             },
-            extensions = { 'nvim-tree', 'nvim-dap-ui' }
+            extensions = { 'nvim-tree', 'nvim-dap-ui', 'overseer', 'mason' },
+            winbar = {
+                lualine_b = {
+                    "navic",
+                    color_correction = nil,
+                    navic_opts = nil
+                }
+            },
         }
     end
 }
