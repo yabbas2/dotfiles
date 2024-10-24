@@ -32,6 +32,8 @@ return {
                             ["il"] = "@loop.inner",
                             ["ap"] = "@parameter.outer",
                             ["ip"] = "@parameter.inner",
+                            ["am"] = "@comment.outer",
+                            ["im"] = "@comment.inner",
                         },
                         include_surrounding_whitespace = true,
                     },

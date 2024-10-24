@@ -1,22 +1,19 @@
 local map = vim.keymap.set
 
-map('n', '<C-h>', '<C-w>h', { noremap = true, silent = true })
-map('n', '<C-j>', '<C-w>j', { noremap = true, silent = true })
-map('n', '<C-k>', '<C-w>k', { noremap = true, silent = true })
-map('n', '<C-l>', '<C-w>l', { noremap = true, silent = true })
+-- map('n', '<C-h>', '<C-w>h', { noremap = true, silent = true })
+-- map('n', '<C-j>', '<C-w>j', { noremap = true, silent = true })
+-- map('n', '<C-k>', '<C-w>k', { noremap = true, silent = true })
+-- map('n', '<C-l>', '<C-w>l', { noremap = true, silent = true })
+map("n", "<C-h>", "<Cmd>NvimTmuxNavigateLeft<CR>", { silent = true })
+map("n", "<C-j>", "<Cmd>NvimTmuxNavigateDown<CR>", { silent = true })
+map("n", "<C-k>", "<Cmd>NvimTmuxNavigateUp<CR>", { silent = true })
+map("n", "<C-l>", "<Cmd>NvimTmuxNavigateRight<CR>", { silent = true })
 
 -- map('n', '<M-]>', ':bnext<CR>', { noremap = true, silent = true })
 -- map('n', '<M-[>', ':bprevious<CR>', { noremap = true, silent = true })
 
 map("v", "J", ":move '>+1<CR>gv=gv", { desc = 'Move text down' })
 map("v", "K", ":move '<-2<CR>gv=gv", { desc = 'Move text up' })
--- map("n", "J", ":move .+1<CR>==", { desc = 'Move text down' })
--- map("n", "K", ":move .-2<CR>==", { desc = 'Move text up' })
-
-map("n", "<C-h>", "<Cmd>NvimTmuxNavigateLeft<CR>", { silent = true })
-map("n", "<C-j>", "<Cmd>NvimTmuxNavigateDown<CR>", { silent = true })
-map("n", "<C-k>", "<Cmd>NvimTmuxNavigateUp<CR>", { silent = true })
-map("n", "<C-l>", "<Cmd>NvimTmuxNavigateRight<CR>", { silent = true })
 
 map("n", "<M-h>", '<Cmd>lua require("tmux").resize_left()<CR>', { silent = true })
 map("n", "<M-j>", '<Cmd>lua require("tmux").resize_bottom()<CR>', { silent = true })

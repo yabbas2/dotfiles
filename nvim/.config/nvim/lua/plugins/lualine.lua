@@ -14,7 +14,7 @@ return {
             violet = '#d183e8',
             grey   = '#303030',
         }
-        local bubbles_theme = {
+        local my_theme = {
             normal = {
                 a = { fg = colors.black, bg = colors.violet },
                 b = { fg = colors.white, bg = colors.grey },
@@ -34,7 +34,7 @@ return {
 
         require('lualine').setup {
             options = {
-                theme  = bubbles_theme,
+                theme  = my_theme,
                 component_separators = '',
                 section_separators = { left = '', right = '' },
             },
@@ -62,13 +62,6 @@ return {
                 lualine_z = { 'location' },
             },
             extensions = { 'nvim-tree', 'nvim-dap-ui', 'overseer', 'mason' },
-            winbar = {
-                lualine_b = {
-                    "navic",
-                    color_correction = nil,
-                    navic_opts = nil
-                }
-            },
         }
     end
 }
