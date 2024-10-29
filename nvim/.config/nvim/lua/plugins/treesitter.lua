@@ -4,7 +4,7 @@ return {
         build = ":TSUpdate",
         config = function ()
             require("nvim-treesitter.configs").setup {
-                ensure_installed = { "python", "c", "cpp", "lua", "vim", "json", "cmake", "css", "dockerfile", "gitignore", "html", "javascript", "json", "markdown", "markdown_inline", "rust", "vue", "dap_repl", "xml" },
+                ensure_installed = { "python", "c", "cpp", "lua", "vim", "cmake", "css", "dockerfile", "gitignore", "html", "javascript", "json", "markdown", "markdown_inline", "rust", "xml", "regex" },
                 highlight = { enable = true },
                 indent = { enable = true },
             }

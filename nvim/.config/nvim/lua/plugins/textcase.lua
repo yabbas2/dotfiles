@@ -1,12 +1,7 @@
 return {
     "johmsalas/text-case.nvim",
     config = function()
-        local opts = {
-            noremap = true,
-            silent = true,
-        }
-        local textcase = require("textcase")
-        textcase.setup({
+        require("textcase").setup({
             default_keymappings_enabled = false,
             prefix = "ga",
             substitude_command_name = nil,
@@ -28,12 +23,14 @@ return {
                 -- "to_lower_phrase_case",
             },
         })
-        vim.keymap.set("n", "gas",function () textcase.lsp_rename('to_snake_case') end, opts)
-        vim.keymap.set("n", "gac",function () textcase.lsp_rename('to_camel_case') end, opts)
-        vim.keymap.set("n", "gap",function () textcase.lsp_rename('to_pascal_case') end, opts)
-        vim.keymap.set("n", "gaws",function () textcase.current_word('to_snake_case') end, opts)
-        vim.keymap.set("n", "gawc",function () textcase.current_word('to_camel_case') end, opts)
-        vim.keymap.set("n", "gawp",function () textcase.current_word('to_pascal_case') end, opts)
     end,
     lazy = false,
+    keys = {
+        { "gas", function () require("textcase").lsp_rename('to_snake_case') end, mode = { "n" } },
+        { "gac", function () require("textcase").lsp_rename('to_camel_case') end, mode = { "n" } },
+        { "gap", function () require("textcase").lsp_rename('to_pascal_case') end, mode = { "n" } },
+        { "gaws", function () require("textcase").current_word('to_snake_case') end, mode = { "n" } },
+        { "gawc", function () require("textcase").current_word('to_camel_case') end, mode = { "n" } },
+        { "gawp", function () require("textcase").current_word('to_pascal_case') end, mode = { "n" } },
+    }
 }

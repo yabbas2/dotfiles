@@ -2,14 +2,16 @@ return {
     'nvim-telescope/telescope.nvim', tag = '0.1.8',
     dependencies = {
         'nvim-lua/plenary.nvim',
-        "nvim-telescope/telescope-live-grep-args.nvim"
+        "nvim-telescope/telescope-live-grep-args.nvim",
+        "nvim-telescope/telescope-ui-select.nvim",
+        "nvim-telescope/telescope-symbols.nvim",
     },
+    lazy = false,
     config = function ()
-        local builtin = require('telescope.builtin')
         local telescope = require("telescope")
         local actions = require("telescope.actions")
         local lga_actions = require("telescope-live-grep-args.actions")
-        local live_grep_args_shortcuts = require("telescope-live-grep-args.shortcuts")
+        local themes = require("telescope.themes")
 
         telescope.setup {
             defaults = {
@@ -32,7 +34,10 @@ return {
                             ["<C-k>"] = lga_actions.quote_prompt(),
                         },
                     },
-                }
+                },
+                ["ui-select"] = {
+                    themes.get_dropdown()
+                },
             },
             pickers = {
                 find_files = { initial_mode = "insert" },
@@ -44,18 +49,21 @@ return {
         }
 
         telescope.load_extension("live_grep_args")
-
-        vim.keymap.set('n', '<Leader>ff', function() builtin.find_files({ no_ignore = true }) end, {})
-        vim.keymap.set('n', '<Leader>fb', function() builtin.buffers() end, {})
-        vim.keymap.set('n', '<Leader>fs', function() builtin.lsp_document_symbols() end, {})
-        vim.keymap.set('n', '<Leader>fd', function() builtin.lsp_definitions() end, {})
-        vim.keymap.set('n', '<Leader>fr', function() builtin.lsp_references() end, {})
-        vim.keymap.set('n', '<Leader>fg', function() telescope.extensions.live_grep_args.live_grep_args() end, {})
-        vim.keymap.set('v', '<Leader>fv', live_grep_args_shortcuts.grep_visual_selection, {})
-        vim.keymap.set('v', '<Leader>flv', live_grep_args_shortcuts.grep_word_visual_selection_current_buffer, {})
-        vim.keymap.set('n', '<Leader>fw', live_grep_args_shortcuts.grep_word_under_cursor, {})
-        vim.keymap.set('n', '<Leader>flw', live_grep_args_shortcuts.grep_word_under_cursor_current_buffer, {})
-        vim.keymap.set('n', '<Leader>fa', "<CMD>Telescope session-lens<CR>", {})
-        vim.keymap.set('n', '<Leader>ft', "<CMD>TodoTelescope<CR>", {})
-    end
+        telescope.load_extension("ui-select")
+    end,
+    keys = {
+        { '<Leader>ff', "<CMD>Telescope find_files find_command=rg,--ignore,--hidden,--files<CR>", mode = { 'n' } },
+        { '<Leader>fb', "<CMD>Telescope buffers<CR>", mode = { 'n' } },
+        { '<Leader>fs', "<CMD>Telescope lsp_document_symbols<CR>", mode = { 'n' } },
+        { '<Leader>fd', "<CMD>Telescope lsp_definitions<CR>", mode = { 'n' } },
+        { '<Leader>fr', "<CMD>Telescope lsp_references<CR>", mode = { 'n' } },
+        { '<Leader>fg', "<CMD>Telescope live_grep_args<CR>", mode = { 'n' } },
+        { '<Leader>fv', "<CMD>lua require('telescope-live-grep-args.shortcuts').grep_visual_selection()<CR>", mode = { 'v' } },
+        { '<Leader>fw', "<CMD>lua require('telescope-live-grep-args.shortcuts').grep_word_under_cursor()<CR>", mode = { 'n' } },
+        { '<Leader>flv', "<CMD>lua require('telescope-live-grep-args.shortcuts').grep_word_visual_selection_current_buffer()<CR>", mode = { 'v' } },
+        { '<Leader>flw', "<CMD>lua require('telescope-live-grep-args.shortcuts').grep_word_under_cursor_current_buffer()<CR>", mode = { 'n' } },
+        { '<Leader>fa', "<CMD>Telescope session-lens<CR>", mode = { 'n' } },
+        { '<Leader>ft', "<CMD>TodoTelescope<CR>", mode = { 'n' } },
+        { '<Leader>fm', "<CMD>Telescope symbols<CR>", mode = { 'n' } },
+    }
 }

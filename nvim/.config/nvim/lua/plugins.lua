@@ -33,6 +33,7 @@ require("lazy").setup({
         require('plugins.treesitter'),
         require('plugins.ufo'),
         require('plugins.whitespace'),
+        require('plugins.yank'),
     },
     rocks = { enabled = false },
 })

@@ -17,7 +17,7 @@ return {
         "williamboman/mason-lspconfig.nvim",
         config = function ()
             require('mason-lspconfig').setup({
-                ensure_installed = { 'pylsp', 'lua_ls', 'rust_analyzer', 'clangd', 'lemminx' },
+                ensure_installed = { 'pylsp', 'lua_ls', 'rust_analyzer', 'clangd', 'lemminx', 'jsonls' },
             })
         end
     },
@@ -53,8 +53,12 @@ return {
             capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 
             local custom_attach = function(client, bufnr)
-                vim.keymap.set('n', '<Leader>rw', function () vim.lsp.buf.rename() end, opts)
-                -- client.server_capabilities.semanticTokensProvider = nil
+                if client.supports_method('textDocument/rename') then
+                    vim.keymap.set('n', '<Leader>lr', function () vim.lsp.buf.rename() end, opts)
+                end
+                if client.supports_method('textDocument/codeAction') then
+                    vim.keymap.set('n', '<Leader>la', function () vim.lsp.buf.code_action() end, opts)
+                end
             end
 
             vim.lsp.handlers["textDocument/hover"] = function(_, result, ctx, config)
@@ -82,6 +86,11 @@ return {
                 end
                 return vim.lsp.util.open_floating_preview(markdown_lines, "markdown", config)
             end
+
+            lspconfig.jsonls.setup {
+                capabilities = capabilities,
+                on_attach = custom_attach,
+            }
 
             lspconfig.pylsp.setup {
                 capabilities = capabilities,
@@ -144,79 +153,44 @@ return {
         },
         config = function ()
             local dapui = require('dapui')
-            local dap = require("dap")
-            local keymap = vim.keymap.set
-            local opts = { noremap = true, silent = true }
-
-            ---- DAP ui ----
-            dapui.setup({
-                icons = { expanded = "▾", collapsed = "▸" },
-                mappings = {
-                    expand = { "<CR>", "<2-LeftMouse>" },
-                    open = "o",
-                    remove = "d",
-                    edit = "e",
-                    repl = "r",
-                    toggle = "t",
-                },
-                expand_lines = true,
+            local dapui_config = {
+                icons = { expanded = "▼", collapsed = "▶", current_frame = "▶" },
                 layouts = {
                     {
                         elements = {
                             { id = "scopes", size = 0.25 },
-                            "watches",
-                            "breakpoints",
-                            "stacks",
+                            { id = "watches", size = 0.25 },
+                            { id = "breakpoints", size = 0.25 },
+                            { id = "stacks", size = 0.25 },
                         },
                         size = 40,
                         position = "right",
                     },
                     {
                         elements = {
-                            "repl",
-                            "console",
+                            { id = "repl", size = 0.5 },
+                            { id = "console", size = 0.5 },
                         },
-                        size = 0.25,
+                        size = 10,
                         position = "bottom",
                     },
                 },
-                floating = {
-                    max_height = nil,
-                    max_width = nil,
-                    border = "single",
-                    mappings = {
-                        close = { "q", "<Esc>" },
-                    },
-                },
-                windows = { indent = 2 },
-                render = {
-                    max_type_length = nil,
-                },
-            })
+            }
+            dapui.setup(dapui_config)
 
-            ---- DAP ----
-            dap.set_log_level("TRACE")
-            dap.listeners.before.launch.dapui = function()
-                dapui.open()
-            end
-
-            ---- Icons ----
             vim.fn.sign_define("DapBreakpoint", { text = "🔴", texthl = "", linehl = "", numhl = "" })
             vim.fn.sign_define("DapStopped", { text = "👉", texthl = "", linehl = "", numhl = "" })
-
-            ---- Keymaps ----
-            keymap('n', '<Leader>dc', function() dap.continue() end, opts)
-            keymap('n', '<Leader>do', function() dap.step_over() end, opts)
-            keymap('n', '<Leader>di', function() dap.step_into() end, opts)
-            keymap('n', '<Leader>dO', function() dap.step_out() end, opts)
-            keymap('n', '<Leader>db', function() dap.toggle_breakpoint() end, opts)
-            keymap("n", '<Leader>dq', function() dap.terminate( { cb = dapui.close() } ) end, opts)
-            keymap('n', '<Leader>dr', function() dap.run_to_cursor() end, opts)
-            keymap('n', '<Leader>dR', function() dap.restart() end, opts)
-            keymap("n", '<Leader>dw', function() dapui.elements.watches.add(vim.fn.expand("<cword>")) end, opts)
-            -- keymap("n", "<Leader>dw", "<CMD>lua require('dapui').float_element('watches', { enter = true })<CR>", opts)
-            -- keymap("n", "<Leader>ds", "<CMD>lua require('dapui').float_element('scopes', { enter = true })<CR>", opts)
-            -- keymap("n", "<Leader>dr", "<CMD>lua require('dapui').float_element('repl', { enter = true })<CR>", opts)
-        end
+        end,
+        keys = {
+            { '<Leader>dc', "<CMD>lua require('dapui').open()<CR><CMD>lua require('dap').continue()<CR>", mode = { 'n' } },
+            { '<Leader>do', "<CMD>lua require('dap').step_over()<CR>", mode = { 'n' } },
+            { '<Leader>di', "<CMD>lua require('dap').step_into()<CR>", mode = { 'n' } },
+            { '<Leader>dO', "<CMD>lua require('dap').step_out()<CR>", mode = { 'n' } },
+            { '<Leader>db', "<CMD>lua require('dap').toggle_breakpoint()<CR>", mode = { 'n' } },
+            { '<Leader>dq', "<CMD>lua require('dapui').close()<CR><CMD>lua require('dap').terminate()<CR>", mode = { "n" } },
+            { '<Leader>dr', "<CMD>lua require('dap').run_to_cursor()<CR>", mode = { 'n' } },
+            { '<Leader>dR', "<CMD>lua require('dap').restart()<CR>", mode = { 'n' } },
+            { '<Leader>dw', "<CMD>lua require('dapui').elements.watches.add(vim.fn.expand('<cword>'))<CR>", mode = { "n" } },
+        }
     }
 }

@@ -4,14 +4,14 @@ return {
     event = "VeryLazy",
     opts = {},
     config = function()
-        local ufo = require("ufo")
-        ufo.setup({
-            provider_selector = function(bufnr, filetype, buftype)
-                return {'treesitter', 'indent'}
+        require("ufo").setup({
+            provider_selector = function(_, _, _)
+                return {'treesitter'}
             end
         })
-
-        vim.keymap.set("n", "zR", function() ufo.openAllFolds() end)
-        vim.keymap.set("n", "zM", function() ufo.closeAllFolds() end)
     end,
+    keys = {
+        { "zR", "<CMD>lua require('ufo').openAllFolds()<CR>", mode = { "n" } },
+        { "zM", "<CMD>lua require('ufo').closeAllFolds()<CR>", mode = { "n" } },
+    },
 }
