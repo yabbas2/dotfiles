@@ -68,34 +68,18 @@ return {
                     { name = "path" },
                 },
                 window = {
-                    completion = {
-                        border = {
-                            { "󱐋", "WarningMsg" },
-                            { "─", "Comment" },
-                            { "╮", "Comment" },
-                            { "│", "Comment" },
-                            { "╯", "Comment" },
-                            { "─", "Comment" },
-                            { "╰", "Comment" },
-                            { "│", "Comment" },
-                        },
+                    completion = cmp.config.window.bordered({
+                        border = "none",
                         scrollbar = false,
-                        winblend = 0,
-                    },
-                    documentation = {
-                        border = {
-                            { "󰙎", "DiagnosticHint" },
-                            { "─", "Comment" },
-                            { "╮", "Comment" },
-                            { "│", "Comment" },
-                            { "╯", "Comment" },
-                            { "─", "Comment" },
-                            { "╰", "Comment" },
-                            { "│", "Comment" },
-                        },
+                        side_padding = 1,
+                        winhighlight = 'Normal:TelescopeNormal,FloatBorder:FloatBorder,CursorLine:Visual,Search:None',
+                    }),
+                    documentation = cmp.config.window.bordered({
+                        border = "none",
                         scrollbar = false,
-                        winblend = 0,
-                    },
+                        side_padding = 1,
+                        winhighlight = 'Normal:TelescopePromptNormal,FloatBorder:FloatBorder,CursorLine:Visual,Search:None',
+                    }),
                 }
             })
             cmp.setup.cmdline(":", {
