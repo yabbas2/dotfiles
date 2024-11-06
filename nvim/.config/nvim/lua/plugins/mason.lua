@@ -24,7 +24,7 @@ return {
     {
         "jay-babu/mason-nvim-dap.nvim",
         config = function ()
-            require('mason-nvim-dap').setup({
+            local config = {
                 ensure_installed = { "cppdbg" },
                 handlers = {
                     function(config)
@@ -41,7 +41,8 @@ return {
                         require('mason-nvim-dap').default_setup(config)
                     end,
                 },
-            })
+            }
+            require('mason-nvim-dap').setup(config)
         end
     },
     {
@@ -59,32 +60,6 @@ return {
                 if client.supports_method('textDocument/codeAction') then
                     vim.keymap.set('n', '<Leader>la', function () vim.lsp.buf.code_action() end, opts)
                 end
-            end
-
-            vim.lsp.handlers["textDocument/hover"] = function(_, result, ctx, config)
-                config = config
-                or {
-                    border = {
-                        { "╭", "Comment" },
-                        { "─", "Comment" },
-                        { "╮", "Comment" },
-                        { "│", "Comment" },
-                        { "╯", "Comment" },
-                        { "─", "Comment" },
-                        { "╰", "Comment" },
-                        { "│", "Comment" },
-                    },
-                }
-                config.focus_id = ctx.method
-                if not (result and result.contents) then
-                    return
-                end
-                local markdown_lines = vim.lsp.util.convert_input_to_markdown_lines(result.contents)
-                markdown_lines = vim.lsp.util.trim_empty_lines(markdown_lines)
-                if vim.tbl_isempty(markdown_lines) then
-                    return
-                end
-                return vim.lsp.util.open_floating_preview(markdown_lines, "markdown", config)
             end
 
             lspconfig.jsonls.setup {

@@ -25,6 +25,7 @@ return {
                     }
                 },
                 layout_strategy = 'vertical',
+                prompt_prefix = "  ",
             },
             extensions = {
                 live_grep_args = {
@@ -52,7 +53,7 @@ return {
         telescope.load_extension("ui-select")
     end,
     keys = {
-        { '<Leader>ff', "<CMD>Telescope find_files find_command=rg,--ignore,--hidden,--files<CR>", mode = { 'n' } },
+        { '<Leader>ff', "<CMD>lua require('telescope.builtin').find_files({ no_ignore = true })<CR>", mode = { 'n' } },
         { '<Leader>fb', "<CMD>Telescope buffers<CR>", mode = { 'n' } },
         { '<Leader>fs', "<CMD>Telescope lsp_document_symbols<CR>", mode = { 'n' } },
         { '<Leader>fd', "<CMD>Telescope lsp_definitions<CR>", mode = { 'n' } },
