@@ -54,6 +54,7 @@ return {
     end,
     keys = {
         { '<Leader>ff', "<CMD>lua require('telescope.builtin').find_files({ no_ignore = true })<CR>", mode = { 'n' } },
+        { '<Leader>fu', "<CMD>lua require('telescope.builtin').resume()<CR>", mode = { 'n' } },
         { '<Leader>fb', "<CMD>Telescope buffers<CR>", mode = { 'n' } },
         { '<Leader>fs', "<CMD>Telescope lsp_document_symbols<CR>", mode = { 'n' } },
         { '<Leader>fd', "<CMD>Telescope lsp_definitions<CR>", mode = { 'n' } },
