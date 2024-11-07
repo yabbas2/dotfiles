@@ -6,7 +6,7 @@ return {
         "nvim-telescope/telescope-ui-select.nvim",
         "nvim-telescope/telescope-symbols.nvim",
     },
-    lazy = false,
+    event = "VeryLazy",
     config = function ()
         local telescope = require("telescope")
         local actions = require("telescope.actions")
@@ -53,7 +53,7 @@ return {
         telescope.load_extension("ui-select")
     end,
     keys = {
-        { '<Leader>ff', "<CMD>lua require('telescope.builtin').find_files({ no_ignore = true })<CR>", mode = { 'n' } },
+        { '<Leader>ff', "<CMD>lua require('telescope.builtin').find_files({ no_ignore = true, hidden = true })<CR>", mode = { 'n' } },
         { '<Leader>fu', "<CMD>lua require('telescope.builtin').resume()<CR>", mode = { 'n' } },
         { '<Leader>fb', "<CMD>Telescope buffers<CR>", mode = { 'n' } },
         { '<Leader>fs', "<CMD>Telescope lsp_document_symbols<CR>", mode = { 'n' } },

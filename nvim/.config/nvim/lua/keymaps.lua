@@ -45,5 +45,5 @@ end, { expr = true, desc = 'Respect indentation' })
 map("v", "<", "<gv", { desc = "Keep visual selection when indenting to left" })
 map("v", ">", ">gv", { desc = "Keep visual selection when indenting to right" })
 
-map("n", "<leader>;", "mmA;<ESC>`m", { desc = "Apend semicolon" })
-map("n", "<leader>,", "mmA,<ESC>`m", { desc = "Apend comma" })
+map("n", "<leader>;", "mmA;<ESC>`m<CMD>delm m<CR>", { desc = "Append semicolon" })
+map("n", "<leader>,", "mmA,<ESC>`m<CMD>delm m<CR>", { desc = "Append comma" })

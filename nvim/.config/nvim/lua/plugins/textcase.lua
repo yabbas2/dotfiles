@@ -1,5 +1,6 @@
 return {
     "johmsalas/text-case.nvim",
+    event = "VeryLazy",
     config = function()
         require("textcase").setup({
             default_keymappings_enabled = false,
@@ -24,7 +25,6 @@ return {
             },
         })
     end,
-    lazy = false,
     keys = {
         { "gas", function () require("textcase").lsp_rename('to_snake_case') end, mode = { "n" } },
         { "gac", function () require("textcase").lsp_rename('to_camel_case') end, mode = { "n" } },

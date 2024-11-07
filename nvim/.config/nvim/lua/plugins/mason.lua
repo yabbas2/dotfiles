@@ -15,6 +15,7 @@ return {
     },
     {
         "williamboman/mason-lspconfig.nvim",
+        event = "VeryLazy",
         config = function ()
             require('mason-lspconfig').setup({
                 ensure_installed = { 'pylsp', 'lua_ls', 'rust_analyzer', 'clangd', 'lemminx', 'jsonls' },
@@ -23,8 +24,9 @@ return {
     },
     {
         "jay-babu/mason-nvim-dap.nvim",
+        event = "VeryLazy",
         config = function ()
-            local config = {
+            require('mason-nvim-dap').setup({
                 ensure_installed = { "cppdbg" },
                 handlers = {
                     function(config)
@@ -41,8 +43,7 @@ return {
                         require('mason-nvim-dap').default_setup(config)
                     end,
                 },
-            }
-            require('mason-nvim-dap').setup(config)
+            })
         end
     },
     {
@@ -122,6 +123,7 @@ return {
     },
     {
         "mfussenegger/nvim-dap",
+        event = "VeryLazy",
         dependencies = {
             "rcarriga/nvim-dap-ui",
             "nvim-neotest/nvim-nio",

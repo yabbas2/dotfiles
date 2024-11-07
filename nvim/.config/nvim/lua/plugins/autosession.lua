@@ -2,8 +2,8 @@ return {
     'rmagatti/auto-session',
     config = function ()
         require('auto-session').setup {
-            suppressed_dirs = { "~/", "~/Projects", "~/Downloads", "/"},
             session_lens = {
+                load_on_setup = false,
                 mappings = {
                     delete_session = { { "i", "n" }, "<C-D>" },
                     alternate_session = { { "i", "n" }, "<C-S>" },

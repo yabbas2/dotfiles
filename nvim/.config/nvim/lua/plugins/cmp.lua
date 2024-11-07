@@ -1,6 +1,7 @@
 return {
     {
         "onsails/lspkind-nvim",
+        event = "VeryLazy",
         config = function ()
            require('lspkind').setup()
         end
@@ -99,6 +100,7 @@ return {
     },
     {
         "L3MON4D3/LuaSnip",
+        event = "VeryLazy",
         version = "v2.*",
         dependencies = { "rafamadriz/friendly-snippets" },
         config = function ()
@@ -107,6 +109,7 @@ return {
         end
     },
     {
-        "rafamadriz/friendly-snippets"
+        "rafamadriz/friendly-snippets",
+        event = "VeryLazy",
     },
 }
