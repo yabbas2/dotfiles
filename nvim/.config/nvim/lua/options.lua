@@ -57,14 +57,3 @@ vim.g.loaded_netrwPlugin = 1
 vim.g.loaded_netrwSettings = 1
 vim.g.loaded_netrwFileHandlers = 1
 vim.g.loaded_remote_plugins = 1
-
--- Status column
-vim.opt.foldcolumn = "1"
-vim.opt.foldlevel = 99
-vim.opt.foldlevelstart = 99
-vim.opt.foldenable = true
-vim.opt.fillchars = "foldopen:▼,foldsep:│,foldclose:▶"
-vim.fn.sign_define("DiagnosticSignHint", { text = "󰋗 ", texthl = "", linehl = "", numhl = "" })
-vim.fn.sign_define("DiagnosticSignInfo", { text = "󰋼 ", texthl = "", linehl = "", numhl = "" })
-vim.fn.sign_define("DiagnosticSignError", { text = "󰅙 ", texthl = "", linehl = "", numhl = "" })
-vim.fn.sign_define("DiagnosticSignWarn", { text = "󰀦 ", texthl = "", linehl = "", numhl = "" })

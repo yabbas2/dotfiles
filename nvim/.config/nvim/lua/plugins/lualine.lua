@@ -9,7 +9,7 @@ return {
                 theme  = "catppuccin",
                 component_separators = '',
                 section_separators = { left = '', right = '' },
-                disabled_filetypes = { 'NvimTree' },
+                disabled_filetypes = { 'neo-tree', 'Outline' },
             },
             sections = {
                 lualine_b = {
@@ -34,7 +34,15 @@ return {
                 lualine_y = {},
                 lualine_z = {}
             },
-            extensions = { 'nvim-tree', 'nvim-dap-ui', 'overseer', 'mason' },
+            extensions = { 'nvim-dap-ui', 'overseer', 'mason' },
+            tabline = {
+                lualine_a = {},
+                lualine_b = {},
+                lualine_c = {},
+                lualine_x = {},
+                lualine_y = {'tabs'},
+                lualine_z = {'buffers'},
+            }
         }
     end
 }

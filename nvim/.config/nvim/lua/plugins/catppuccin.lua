@@ -12,21 +12,15 @@ return {
                     style = "nvchad"
                 },
                 mason = true,
-                notify = true,
                 cmp = true,
                 dap = true,
                 dap_ui = true,
                 nvim_surround = true,
-                nvimtree = true,
                 treesitter = true,
                 treesitter_context = true,
                 ufo = true,
                 overseer = true,
                 gitsigns = true,
-                dropbar = {
-                    enabled = true,
-                    color_mode = true,
-                },
                 indent_blankline = true,
                 noice = true,
                 native_lsp = {

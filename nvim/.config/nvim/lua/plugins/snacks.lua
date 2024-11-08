@@ -2,6 +2,12 @@ return {
     "folke/snacks.nvim",
     priority = 1000,
     lazy = false,
+    init = function ()
+        vim.fn.sign_define("DiagnosticSignHint", { text = "󰋗 ", texthl = "", linehl = "", numhl = "" })
+        vim.fn.sign_define("DiagnosticSignInfo", { text = "󰋼 ", texthl = "", linehl = "", numhl = "" })
+        vim.fn.sign_define("DiagnosticSignError", { text = "󰅙 ", texthl = "", linehl = "", numhl = "" })
+        vim.fn.sign_define("DiagnosticSignWarn", { text = "󰀦 ", texthl = "", linehl = "", numhl = "" })
+    end,
     config = function ()
         require('snacks').setup({
             bigfile = { enabled = false },
