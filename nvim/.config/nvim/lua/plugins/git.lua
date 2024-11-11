@@ -32,5 +32,20 @@ return {
                 },
             })
         end
+    },
+    {
+        "NeogitOrg/neogit",
+        event = "VeryLazy",
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+        },
+        config = function ()
+            require("neogit").setup({
+                graph_style = "unicode",
+            })
+        end,
+        keys = {
+            { "<leader>gg", "<CMD>Neogit<CR>", mode = { "n" } },
+        },
     }
 }
