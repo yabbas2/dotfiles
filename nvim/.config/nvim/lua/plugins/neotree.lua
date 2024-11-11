@@ -9,6 +9,7 @@ return {
     },
     config = function ()
         require("neo-tree").setup({
+            open_files_do_not_replace_types = { "terminal", "Outline", "qf" },
             default_component_configs = {
                 symlink_target = {
                     enabled = true,
@@ -46,6 +47,7 @@ return {
                 },
                 follow_current_file = {
                     enabled = true,
+                    leave_dirs_open = false,
                 },
             },
         })

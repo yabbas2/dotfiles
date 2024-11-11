@@ -61,6 +61,7 @@ return {
                 if client.supports_method('textDocument/codeAction') then
                     vim.keymap.set('n', '<Leader>la', function () vim.lsp.buf.code_action() end, opts)
                 end
+                vim.keymap.set('n', '<Leader>ld', function () vim.diagnostic.open_float() end, opts)
             end
 
             lspconfig.jsonls.setup {

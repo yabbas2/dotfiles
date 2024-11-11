@@ -14,6 +14,7 @@ return {
             notifier = {
                 enabled = true,
                 style = "minimal",
+                top_down = false,
             },
             quickfile = { enabled = false },
             statuscolumn = {
@@ -32,5 +33,6 @@ return {
     end,
     keys = {
         { "<leader>tg", "<CMD>lua require('snacks').lazygit()<CR>", mode = { "n" } },
+        { "<leader>bd", "<CMD>lua require('snacks').bufdelete()<CR>", mode = { "n" } },
     }
 }
