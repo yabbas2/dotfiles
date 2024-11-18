@@ -55,6 +55,7 @@ return {
             capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 
             local custom_attach = function(client, bufnr)
+                opts.buffer = bufnr
                 if client.supports_method('textDocument/rename') then
                     vim.keymap.set('n', '<Leader>lr', function () vim.lsp.buf.rename() end, opts)
                 end
@@ -160,14 +161,14 @@ return {
             vim.fn.sign_define("DapStopped", { text = "👉", texthl = "", linehl = "", numhl = "" })
         end,
         keys = {
-            { '<Leader>dc', "<CMD>lua require('dapui').open()<CR><CMD>lua require('dap').continue()<CR>", mode = { 'n' } },
-            { '<Leader>do', "<CMD>lua require('dap').step_over()<CR>", mode = { 'n' } },
-            { '<Leader>di', "<CMD>lua require('dap').step_into()<CR>", mode = { 'n' } },
-            { '<Leader>dO', "<CMD>lua require('dap').step_out()<CR>", mode = { 'n' } },
-            { '<Leader>db', "<CMD>lua require('dap').toggle_breakpoint()<CR>", mode = { 'n' } },
-            { '<Leader>dq', "<CMD>lua require('dapui').close()<CR><CMD>lua require('dap').terminate()<CR>", mode = { "n" } },
-            { '<Leader>dr', "<CMD>lua require('dap').run_to_cursor()<CR>", mode = { 'n' } },
-            { '<Leader>dR', "<CMD>lua require('dap').restart()<CR>", mode = { 'n' } },
+            { '<F5>', "<CMD>lua require('dapui').open()<CR><CMD>lua require('dap').continue()<CR>", mode = { 'n' } },
+            { '<F10>', "<CMD>lua require('dap').step_over()<CR>", mode = { 'n' } },
+            { '<F11>', "<CMD>lua require('dap').step_into()<CR>", mode = { 'n' } },
+            { '<F12>', "<CMD>lua require('dap').step_out()<CR>", mode = { 'n' } },
+            { '<F9>', "<CMD>lua require('dap').toggle_breakpoint()<CR>", mode = { 'n' } },
+            { '<F7>', "<CMD>lua require('dapui').close()<CR><CMD>lua require('dap').terminate()<CR>", mode = { "n" } },
+            { '<F8>', "<CMD>lua require('dap').run_to_cursor()<CR>", mode = { 'n' } },
+            { '<F6>', "<CMD>lua require('dap').restart()<CR>", mode = { 'n' } },
             { '<Leader>dw', "<CMD>lua require('dapui').elements.watches.add(vim.fn.expand('<cword>'))<CR>", mode = { "n" } },
         }
     }
