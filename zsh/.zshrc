@@ -110,9 +110,12 @@ alias vim='nvim'
 
 # OS-dependent configuration
 if [[ $(uname) == "Darwin" ]]; then
-    source "$ZSH_CUSTOM"/os/darwin.zsh
+    [ -f "$ZSH_CUSTOM"/os/darwin.zsh ] && source "$ZSH_CUSTOM"/os/darwin.zsh
 elif [[ $(uname) == "Linux" ]]; then
-    source "$ZSH_CUSTOM"/os/linux.zsh
+    [ -f "$ZSH_CUSTOM"/os/linux.zsh ] && source "$ZSH_CUSTOM"/os/linux.zsh
 else
     echo 'Unknown OS!'
 fi
+
+# Project-based env variables
+[ -f "$HOME"/.zshenv ] && source "$HOME"/.zshenv
