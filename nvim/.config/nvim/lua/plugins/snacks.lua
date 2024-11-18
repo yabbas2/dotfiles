@@ -13,7 +13,7 @@ return {
             bigfile = { enabled = false },
             notifier = {
                 enabled = true,
-                style = "minimal",
+                style = "compact",
                 top_down = false,
             },
             quickfile = { enabled = false },
@@ -32,7 +32,6 @@ return {
         })
     end,
     keys = {
-        { "<leader>tg", "<CMD>lua require('snacks').lazygit()<CR>", mode = { "n" } },
         { "<leader>bd", "<CMD>lua require('snacks').bufdelete()<CR>", mode = { "n" } },
     }
 }

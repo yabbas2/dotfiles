@@ -1,4 +1,4 @@
-# Dotfiles 
+# Dotfiles
 
 ## Dependencies
 
@@ -8,6 +8,5 @@
 * tmux
 * tpm
 * kitty
-* lazygit
 * neovim
 * oh-my-zsh
