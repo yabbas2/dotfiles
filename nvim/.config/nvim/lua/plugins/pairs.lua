@@ -12,10 +12,8 @@ return {
         event = "InsertEnter",
         config = function ()
             require('nvim-autopairs').setup ({
-                fast_wrap = {
-                    highlight = "TelescopePromptTitle",
-                    highlight_grey = "Comment"
-                },
+                check_ts = true,
+                map_cr = false,
             })
             local cmp_autopairs = require('nvim-autopairs.completion.cmp')
             local cmp = require('cmp')
