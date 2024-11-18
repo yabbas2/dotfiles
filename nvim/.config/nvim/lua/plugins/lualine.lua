@@ -6,10 +6,9 @@ return {
     config = function ()
         require('lualine').setup {
             options = {
-                theme  = "catppuccin",
-                component_separators = '',
-                section_separators = { left = '', right = '' },
-                disabled_filetypes = { 'neo-tree', 'Outline' },
+                theme  = "ayu_dark",
+                component_separators = { left = '|', right = '|'},
+                section_separators = '',
             },
             sections = {
                 lualine_b = {
@@ -34,13 +33,13 @@ return {
                 lualine_y = {},
                 lualine_z = {}
             },
-            extensions = { 'nvim-dap-ui', 'overseer', 'mason' },
+            extensions = { 'nvim-dap-ui', 'overseer', 'mason', 'neo-tree', 'quickfix', 'symbols-outline' },
             tabline = {
-                lualine_a = {},
+                lualine_a = {'tabs'},
                 lualine_b = {},
                 lualine_c = {},
                 lualine_x = {},
-                lualine_y = {'tabs'},
+                lualine_y = {},
                 lualine_z = {'buffers'},
             }
         }
