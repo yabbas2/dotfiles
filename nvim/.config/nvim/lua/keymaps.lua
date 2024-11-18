@@ -14,16 +14,16 @@ map({ 'n', 'i' }, '<F1>', '<CMD>bprevious<CR>', { noremap = true, silent = true 
 map({ 'n', 'i' }, '<F4>', '<CMD>tabnext<CR>', { noremap = true, silent = true })
 map({ 'n', 'i' }, '<F3>', '<CMD>tabprevious<CR>', { noremap = true, silent = true })
 
-map("v", "J", "<CMD>move '>+1<CR>gv=gv", { desc = 'Move text down' })
-map("v", "K", "<CMD>move '<-2<CR>gv=gv", { desc = 'Move text up' })
+map("v", "J", ":move '>+1<CR>gv=gv", { desc = 'Move text down' })
+map("v", "K", ":move '<-2<CR>gv=gv", { desc = 'Move text up' })
 
 map("n", "<M-h>", '<CMD>lua require("tmux").resize_left()<CR>', { silent = true })
 map("n", "<M-j>", '<CMD>lua require("tmux").resize_bottom()<CR>', { silent = true })
 map("n", "<M-k>", '<CMD>lua require("tmux").resize_top()<CR>', { silent = true })
 map("n", "<M-l>", '<CMD>lua require("tmux").resize_right()<CR>', { silent = true })
 
-map("n", "sh", "<CMD>vsplit<Return>", { noremap = true, silent = true })
-map("n", "sv", "<CMD>split<Return>", { noremap = true, silent = true })
+map("n", "<leader>sh", "<CMD>vsplit<CR>", { noremap = true, silent = true })
+map("n", "<leader>sv", "<CMD>split<CR>", { noremap = true, silent = true })
 
 map("n", "<Leader>hh", '<CMD>set hlsearch!<CR>', { silent = true })
 
