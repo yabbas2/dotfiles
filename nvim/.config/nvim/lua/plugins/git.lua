@@ -29,6 +29,17 @@ return {
                         winbar_info = true,
                     },
                 },
+                keymaps = {
+                    view = {
+                        { "n", "q", "<CMD>tabclose<CR>" }
+                    },
+                    file_panel = {
+                        { "n", "q", "<CMD>tabclose<CR>" }
+                    },
+                    file_history_panel = {
+                        { "n", "q", "<CMD>tabclose<CR>" }
+                    },
+                },
             })
         end
     },

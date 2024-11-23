@@ -28,6 +28,7 @@ return {
                 },
             },
             words = { enabled = false },
+            dashboard = { enabled = false },
             styles = {},
         })
     end,

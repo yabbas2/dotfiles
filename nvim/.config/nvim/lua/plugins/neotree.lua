@@ -47,9 +47,18 @@ return {
                 },
                 follow_current_file = {
                     enabled = true,
-                    leave_dirs_open = false,
                 },
+                use_libuv_file_watcher = true,
             },
+        })
+
+        vim.api.nvim_create_autocmd({ "BufLeave" }, {
+            pattern = { "*Neogit*" },
+            group = vim.api.nvim_create_augroup("git_refresh_neotree", {clear = true}),
+            callback = function()
+                local events = require("neo-tree.events")
+                events.fire_event(events.GIT_EVENT)
+            end,
         })
     end,
     keys = {
