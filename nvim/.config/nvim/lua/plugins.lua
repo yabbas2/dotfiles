@@ -18,6 +18,7 @@ require("lazy").setup({
         require('plugins.cmp'),
         require('plugins.git'),
         require('plugins.ibl'),
+        require('plugins.illuminate'),
         require('plugins.lualine'),
         require('plugins.markdown'),
         require('plugins.mason'),

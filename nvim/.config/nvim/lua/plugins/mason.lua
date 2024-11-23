@@ -56,13 +56,10 @@ return {
 
             local custom_attach = function(client, bufnr)
                 opts.buffer = bufnr
-                if client.supports_method('textDocument/rename') then
-                    vim.keymap.set('n', '<Leader>lr', function () vim.lsp.buf.rename() end, opts)
-                end
-                if client.supports_method('textDocument/codeAction') then
-                    vim.keymap.set('n', '<Leader>la', function () vim.lsp.buf.code_action() end, opts)
-                end
+                vim.keymap.set('n', '<Leader>lr', function () vim.lsp.buf.rename() end, opts)
+                vim.keymap.set('n', '<Leader>la', function () vim.lsp.buf.code_action() end, opts)
                 vim.keymap.set('n', '<Leader>ld', function () vim.diagnostic.open_float() end, opts)
+                client.server_capabilities.documentHighlightProvider = false
             end
 
             lspconfig.jsonls.setup {
