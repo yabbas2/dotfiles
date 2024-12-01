@@ -9,6 +9,8 @@ return {
     },
     config = function ()
         require("neo-tree").setup({
+            enable_diagnostics = false,
+            popup_border_style = "single",
             open_files_do_not_replace_types = { "terminal", "Outline", "qf" },
             default_component_configs = {
                 symlink_target = {
@@ -24,14 +26,14 @@ return {
                 modified = {
                     symbol = "~",
                 },
-                diagnostics = {
-                    symbols = {
-                        error = "󰅙 ",
-                        warn = "󰀦 ",
-                        info = "󰋼 ",
-                        hint = "󰋗 ",
-                    },
-                },
+                -- diagnostics = {
+                --     symbols = {
+                --         error = "󰅙 ",
+                --         warn = "󰀦 ",
+                --         info = "󰋼 ",
+                --         hint = "󰋗 ",
+                --     },
+                -- },
             },
             window = {
                 mappings = {

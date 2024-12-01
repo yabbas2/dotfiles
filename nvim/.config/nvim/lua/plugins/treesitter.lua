@@ -4,9 +4,10 @@ return {
         build = ":TSUpdate",
         config = function ()
             require("nvim-treesitter.configs").setup {
-                ensure_installed = { "python", "c", "cpp", "lua", "vim", "cmake", "css", "dockerfile", "gitignore", "html", "javascript", "json", "markdown", "markdown_inline", "rust", "xml", "regex", "bash" },
+                ensure_installed = { "python", "c", "cpp", "lua", "vim", "cmake", "css", "dockerfile", "gitignore", "html", "javascript", "json", "markdown", "markdown_inline", "rust", "xml", "regex", "bash", "latex" },
                 highlight = { enable = true },
                 indent = { enable = true },
+                additional_vim_regex_highlighting = false,
             }
         end
     },

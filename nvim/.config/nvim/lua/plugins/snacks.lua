@@ -15,6 +15,14 @@ return {
                 enabled = true,
                 style = "compact",
                 top_down = false,
+                icons = {
+                    error = "󰅙 ",
+                    warn = "󰀦 ",
+                    info = "󰋼 ",
+                    hint = "󰋗 ",
+                    debug = " ",
+                    trace = " ",
+                },
             },
             quickfile = { enabled = false },
             statuscolumn = {
