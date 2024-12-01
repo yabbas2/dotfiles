@@ -8,9 +8,9 @@ return {
             session_lens = {
                 load_on_setup = false,
                 mappings = {
-                    delete_session = { { "i", "n" }, "<C-D>" },
-                    alternate_session = { { "i", "n" }, "<C-S>" },
-                    copy_session = { { "i", "n" }, "<C-Y>" },
+                    delete_session = { { "i", "n" }, "<C-r>" },
+                    alternate_session = { { "i", "n" }, "<C-s>" },
+                    copy_session = { { "i", "n" }, "<C-y>" },
                 },
                 theme_conf = {
                     border = true,

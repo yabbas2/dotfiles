@@ -21,7 +21,7 @@ return {
                         ["<C-Up>"] = actions.cycle_history_prev,
                     },
                     n = {
-                        ["<C-D>"] = actions.delete_buffer,
+                        ["<C-r>"] = actions.delete_buffer,
                     }
                 },
                 layout_strategy = 'vertical',
