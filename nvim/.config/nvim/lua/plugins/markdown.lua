@@ -1,12 +1,10 @@
 return {
-    "iamcco/markdown-preview.nvim",
-    cmd = { "MarkdownPreviewToggle" },
-    ft = { "markdown" },
-    build = function()
-        require("lazy").load { plugins = { "markdown-preview.nvim" } }
-        vim.fn["mkdp#util#install"]()
-    end,
-    keys = {
-        {"<leader>md", "<CMD>MarkdownPreviewToggle<CR>", mode = { "n" }},
-    },
+    {
+        "OXY2DEV/markview.nvim",
+        event = "VeryLazy",
+        dependencies = {
+            "nvim-treesitter/nvim-treesitter",
+            "nvim-tree/nvim-web-devicons"
+        }
+    }
 }
