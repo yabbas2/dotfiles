@@ -30,9 +30,6 @@ map("n", "<Leader>hh", '<CMD>set hlsearch!<CR>', { silent = true })
 map({ "n", "x" }, "j", [[v:count == 0 ? 'gj' : 'j']], { expr = true, desc = 'Move down in wrapped text' })
 map({ "n", "x" }, "k", [[v:count == 0 ? 'gk' : 'k']], { expr = true, desc = 'Move up in wrapped text'})
 
-map("n", "<C-u>", "<C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y>", { desc = 'Scroll smoothly up' })
-map("n", "<C-d>", "<C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E>", { desc = 'Scroll smoothly down' })
-
 map({ "n", "v" }, "H", "^", { desc = 'Move to beginning of line' })
 map({ "n", "v" }, "L", "g_", { desc = 'Move to end of line' })
 

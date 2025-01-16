@@ -17,7 +17,6 @@ require("lazy").setup({
         require('plugins.catppuccin'),
         require('plugins.cmp'),
         require('plugins.git'),
-        require('plugins.ibl'),
         require('plugins.illuminate'),
         require('plugins.lualine'),
         require('plugins.markdown'),

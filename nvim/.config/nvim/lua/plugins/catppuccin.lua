@@ -21,8 +21,9 @@ return {
                 ufo = true,
                 overseer = true,
                 gitsigns = true,
-                indent_blankline = true,
+                indent_blankline = false,
                 noice = true,
+                snacks = true,
                 native_lsp = {
                     enabled = true,
                     virtual_text = {

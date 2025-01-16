@@ -37,6 +37,37 @@ return {
             },
             words = { enabled = false },
             dashboard = { enabled = false },
+            scroll = {
+                animate = {
+                    duration = { step = 15, total = 250 },
+                    easing = "inSine",
+                },
+                animate_repeat = {
+                    delay = 50,
+                    duration = { step = 5, total = 50 },
+                    easing = "inSine",
+                },
+            },
+            indent = {
+                indent = {
+                    priority = 1,
+                    enabled = true,
+                    char = "│",
+                    only_scope = false,
+                    only_current = false,
+                    hl = "SnacksIndent",
+                },
+                animate = { enabled = false, },
+                scope = {
+                    enabled = true,
+                    priority = 200,
+                    char = "│",
+                    underline = false,
+                    only_current = false,
+                    hl = "Normal",
+                },
+                chunk = { enabled = false, },
+            },
             styles = {},
         })
     end,
