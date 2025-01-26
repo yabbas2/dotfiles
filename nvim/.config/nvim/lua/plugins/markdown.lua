@@ -7,9 +7,7 @@ return {
             "nvim-tree/nvim-web-devicons"
         },
         config = function()
-            require('render-markdown').setup({
-                file_types = { "markdown" },
-            })
+            require('render-markdown').setup({})
         end,
     }
 }

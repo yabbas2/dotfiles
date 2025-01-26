@@ -7,6 +7,5 @@
 * stow
 * tmux
 * tpm
-* kitty
 * neovim
 * oh-my-zsh

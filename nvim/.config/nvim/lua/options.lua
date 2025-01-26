@@ -32,6 +32,7 @@ vim.opt.smartcase = true
 -- misc
 vim.opt.swapfile = false
 vim.opt.backup = false
+vim.opt.laststatus = 3
 
 -- Space as leaderkey
 vim.keymap.set("n", "<Space>", "<Nop>", { silent = true })
