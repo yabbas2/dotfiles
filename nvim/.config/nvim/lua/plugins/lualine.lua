@@ -10,7 +10,7 @@ return {
             for _, client in pairs(buf_clients) do
                 table.insert(buf_client_names, client.name)
             end
-            return ' ' .. (#buf_client_names ~= 0 and buf_client_names[1] or 'no_lsp')
+            return #buf_client_names ~= 0 and buf_client_names[1] or 'no_lsp'
         end
         require'lualine'.setup {
             options = {
@@ -47,8 +47,21 @@ return {
                     'encoding',
                     'fileformat',
                     'filetype',
-                    lsp_client,
+                    {
+                        lsp_client,
+                        icon = { '', align='left' },
+                    },
                 },
+                lualine_y = {
+                    'progress',
+                    {
+                        'searchcount',
+                        maxcount = 999,
+                        timeout = 5,
+                        icons_enabled = true,
+                        icon = { '', align='left' },
+                    },
+                }
             },
             inactive_sections = {
                 lualine_a = {},

@@ -38,6 +38,9 @@ return {
             popupmenu = {
                 enabled = false,
             },
+            messages = {
+                view_search = false,
+            }
         })
     end
 }
