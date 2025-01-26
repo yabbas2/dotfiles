@@ -36,18 +36,30 @@ return {
                             ["am"] = "@comment.outer",
                             ["im"] = "@comment.inner",
                         },
-                        include_surrounding_whitespace = true,
+                        include_surrounding_whitespace = false,
                     },
                     swap = {
                         enable = true,
                         swap_next = {
-                            ["<leader>sp"] = "@parameter.inner",
+                            ["<leader>sn"] = "@parameter.inner",
                         },
                         swap_previous = {
-                            ["<leader>sP"] = "@parameter.inner",
+                            ["<leader>sp"] = "@parameter.inner",
                         },
                     },
-                },
+                    move = {
+                        enable = true,
+                        set_jumps = true,
+                        goto_next_start = {
+                            ["]f"] = "@function.outer",
+                            ["]p"] = "@parameter.inner",
+                        },
+                        goto_previous_start = {
+                            ["[f"] = "@function.outer",
+                            ["[p"] = "@parameter.inner",
+                        }
+                    },
+                }
             }
         end
     },
