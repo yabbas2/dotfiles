@@ -54,7 +54,9 @@ return {
                 formatting = {
                     format = lspkind.cmp_format({
                         mode = "symbol_text",
+                        symbol_map = { Codeium = " ", },
                         menu = ({
+                            codeium = '[AI]',
                             nvim_lsp = '[Lsp]',
                             luasnip = '[Luasnip]',
                             buffer = '[File]',
@@ -63,9 +65,11 @@ return {
                     }),
                 },
                 sources = {
-                    { name = "nvim_lsp", priority = 1000 },
+                    { name = "codeium", priority = 1000 },
+                    { name = "nvim_lsp", priority = 500 },
                     { name = "luasnip", priority = 15 },
                     { name = "buffer", priority = 1 },
+                    { name = 'render-markdown' },
                     { name = "path" },
                 },
                 window = {
@@ -73,13 +77,11 @@ return {
                         border = "none",
                         scrollbar = false,
                         side_padding = 1,
-                        winhighlight = 'Normal:TelescopeNormal,FloatBorder:FloatBorder,CursorLine:Visual,Search:None',
                     }),
                     documentation = cmp.config.window.bordered({
                         border = "none",
                         scrollbar = false,
                         side_padding = 1,
-                        winhighlight = 'Normal:TelescopePromptNormal,FloatBorder:FloatBorder,CursorLine:Visual,Search:None',
                     }),
                 }
             })

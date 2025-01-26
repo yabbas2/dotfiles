@@ -7,10 +7,7 @@ return {
             -- transparent_background = true,
             default_integrations = false,
             integrations = {
-                telescope = {
-                    enabled = true,
-                    style = "nvchad"
-                },
+                telescope = false,
                 mason = true,
                 cmp = true,
                 dap = true,

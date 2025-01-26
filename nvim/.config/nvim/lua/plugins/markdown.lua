@@ -1,10 +1,15 @@
 return {
     {
-        "OXY2DEV/markview.nvim",
+        'MeanderingProgrammer/render-markdown.nvim',
         event = "VeryLazy",
         dependencies = {
             "nvim-treesitter/nvim-treesitter",
             "nvim-tree/nvim-web-devicons"
-        }
+        },
+        config = function()
+            require('render-markdown').setup({
+                file_types = { "markdown" },
+            })
+        end,
     }
 }

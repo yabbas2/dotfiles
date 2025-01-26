@@ -68,10 +68,65 @@ return {
                 },
                 chunk = { enabled = false, },
             },
+            picker = {
+                sources = {
+                    buffers = {
+                        preview = "none",
+                        layout = { preset = "vscode", },
+                    },
+                    files = {
+                        -- hidden = true,
+                        ignored = true,
+                    },
+                    grep = {
+                        -- hidden = true,
+                        ignored = true,
+                    },
+                },
+                layout = {
+                    cycle = true,
+                    preset = "vertical",
+                },
+                icons = {
+                    diagnostics = {
+                        Error = " ",
+                        Warn  = " ",
+                        Hint  = "󰋗 ",
+                        Info  = " ",
+                    },
+                },
+            },
             styles = {},
         })
     end,
     keys = {
+        -- buffer delete
         { "<leader>bd", "<CMD>lua require('snacks').bufdelete()<CR>", mode = { "n" } },
+        -- find
+        { "<leader>fb", function() Snacks.picker.buffers() end, desc = "Buffers" },
+        { "<leader>ff", function() Snacks.picker.files() end, desc = "Find Files" },
+        { "<leader>fr", function() Snacks.picker.recent() end, desc = "Recent" },
+        -- grep
+        { "<leader>fB", function() Snacks.picker.grep_buffers() end, desc = "Grep Open Buffers" },
+        { "<leader>fg", function() Snacks.picker.grep() end, desc = "Grep" },
+        { "<leader>fw", function() Snacks.picker.grep_word() end, desc = "Visual selection or word", mode = { "n", "x" } },
+        -- search
+        { "<leader>fc", function() Snacks.picker.command_history() end, desc = "Command History" },
+        { "<leader>fd", function() Snacks.picker.diagnostics() end, desc = "Diagnostics" },
+        { "<leader>fh", function() Snacks.picker.help() end, desc = "Help Pages" },
+        { "<leader>fu", function() Snacks.picker.resume() end, desc = "Resume" },
+        { "<leader>fp", function() Snacks.picker.projects() end, desc = "Projects" },
+        { "<leader>fy", function() Snacks.picker.cliphist() end, desc = "Clipboard history" },
+        { "<leader>fj", function() Snacks.picker.jumps() end, desc = "Jumps" },
+        -- LSP
+        { "gd", function() Snacks.picker.lsp_definitions() end, desc = "Goto Definition" },
+        { "gr", function() Snacks.picker.lsp_references() end, nowait = true, desc = "References" },
+        { "gI", function() Snacks.picker.lsp_implementations() end, desc = "Goto Implementation" },
+        { "gy", function() Snacks.picker.lsp_type_definitions() end, desc = "Goto Type Definition" },
+        { "<leader>fs", function() Snacks.picker.lsp_symbols() end, desc = "LSP Symbols" },
+        -- todo comments
+        { "<leader>ft", function() Snacks.picker.todo_comments() end, desc = "Todo" },
+        -- undo
+        { "<leader>u", function() Snacks.picker.undo() end, desc = "Undo" },
     }
 }
