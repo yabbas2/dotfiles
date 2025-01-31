@@ -60,6 +60,7 @@ return {
                 vim.keymap.set('n', '<Leader>la', function () vim.lsp.buf.code_action() end, opts)
                 vim.keymap.set('n', '<Leader>ld', function () vim.diagnostic.open_float() end, opts)
                 client.server_capabilities.documentHighlightProvider = false
+                client.server_capabilities.semanticTokensProvider = false
             end
 
             lspconfig.jsonls.setup {
@@ -118,7 +119,10 @@ return {
                     }
                 }
             }
-        end
+
+            vim.keymap.set('n', "<leader>lR", "<CMD>LspRestart<CR>")
+            vim.keymap.set('n', "<leader>lS", "<CMD>LspStart<CR>")
+        end,
     },
     {
         "mfussenegger/nvim-dap",

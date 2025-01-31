@@ -73,6 +73,7 @@ return {
                     buffers = {
                         preview = "none",
                         layout = { preset = "vscode", },
+                        focus = "list",
                     },
                     files = {
                         -- hidden = true,
@@ -116,7 +117,6 @@ return {
         { "<leader>fh", function() Snacks.picker.help() end, desc = "Help Pages" },
         { "<leader>fu", function() Snacks.picker.resume() end, desc = "Resume" },
         { "<leader>fp", function() Snacks.picker.projects() end, desc = "Projects" },
-        { "<leader>fy", function() Snacks.picker.cliphist() end, desc = "Clipboard history" },
         { "<leader>fj", function() Snacks.picker.jumps() end, desc = "Jumps" },
         -- LSP
         { "gd", function() Snacks.picker.lsp_definitions() end, desc = "Goto Definition" },
