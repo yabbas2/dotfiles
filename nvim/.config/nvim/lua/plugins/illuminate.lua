@@ -9,7 +9,6 @@ return {
 				'DiffviewFileHistory',
 				'DiffviewFiles',
 				'git',
-				'neo-tree',
 				'Outline',
 			},
             providers = {

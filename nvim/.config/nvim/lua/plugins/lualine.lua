@@ -23,10 +23,10 @@ return {
                     {
                         "diagnostics",
                         symbols = {
-                            error = "󰅙 ",
-                            warn = "󰀦 ",
-                            info = "󰋼 ",
-                            hint = "󰋗 ",
+                            error = vim.diagnostic.config().signs.text[vim.diagnostic.severity.ERROR],
+                            warn  = vim.diagnostic.config().signs.text[vim.diagnostic.severity.WARN],
+                            info  = vim.diagnostic.config().signs.text[vim.diagnostic.severity.INFO],
+                            hint  = vim.diagnostic.config().signs.text[vim.diagnostic.severity.HINT],
                         },
                     },
                 },
@@ -78,7 +78,7 @@ return {
                 lualine_y = {},
                 lualine_z = {}
             },
-            extensions = { 'nvim-dap-ui', 'overseer', 'mason', 'neo-tree', 'quickfix', 'symbols-outline' },
+            extensions = { 'nvim-dap-ui', 'overseer', 'mason', 'quickfix', 'symbols-outline' },
             tabline = {
                 lualine_a = {
                     {

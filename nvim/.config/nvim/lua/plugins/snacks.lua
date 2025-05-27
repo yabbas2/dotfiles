@@ -2,13 +2,7 @@ return {
     "folke/snacks.nvim",
     priority = 1000,
     lazy = false,
-    init = function ()
-        vim.fn.sign_define("DiagnosticSignHint", { text = "󰋗 ", texthl = "", linehl = "", numhl = "" })
-        vim.fn.sign_define("DiagnosticSignInfo", { text = "󰋼 ", texthl = "", linehl = "", numhl = "" })
-        vim.fn.sign_define("DiagnosticSignError", { text = "󰅙 ", texthl = "", linehl = "", numhl = "" })
-        vim.fn.sign_define("DiagnosticSignWarn", { text = "󰀦 ", texthl = "", linehl = "", numhl = "" })
-    end,
-    config = function ()
+    config = function()
         require('snacks').setup({
             bigfile = { enabled = false },
             notifier = {
@@ -16,14 +10,11 @@ return {
                 style = "compact",
                 top_down = false,
                 icons = {
-                    error = "󰅙 ",
-                    warn = "󰀦 ",
-                    info = "󰋼 ",
-                    hint = "󰋗 ",
                     debug = " ",
                     trace = " ",
                 },
             },
+            lazygit = { enabled = true },
             quickfile = { enabled = false },
             statuscolumn = {
                 enabled = true,
@@ -68,6 +59,9 @@ return {
                 },
                 chunk = { enabled = false, },
             },
+            explorer = {
+                replace_netrw = true,
+            },
             picker = {
                 sources = {
                     buffers = {
@@ -83,50 +77,57 @@ return {
                         -- hidden = true,
                         ignored = true,
                     },
+                    explorer = {
+                        diagnostics = false,
+                        git_status = false,
+                    },
                 },
                 layout = {
                     cycle = true,
                     preset = "vertical",
                 },
-                icons = {
-                    diagnostics = {
-                        Error = " ",
-                        Warn  = " ",
-                        Hint  = "󰋗 ",
-                        Info  = " ",
+                previewers = {
+                    file = {
+                        max_size = 2024 * 2024,
+                        max_line_length = 1000,
                     },
                 },
+            },
+            image = {
+                enabled = true,
+                force = true,
             },
             styles = {},
         })
     end,
     keys = {
         -- buffer delete
-        { "<leader>bd", "<CMD>lua require('snacks').bufdelete()<CR>", mode = { "n" } },
+        { "<leader>q",  "<CMD>lua require('snacks').bufdelete()<CR>",         mode = { "n" } },
         -- find
-        { "<leader>fb", function() Snacks.picker.buffers() end, desc = "Buffers" },
-        { "<leader>ff", function() Snacks.picker.files() end, desc = "Find Files" },
-        { "<leader>fr", function() Snacks.picker.recent() end, desc = "Recent" },
+        { "<leader>fb", function() Snacks.picker.buffers() end,               desc = "Buffers" },
+        { "<leader>ff", function() Snacks.picker.files() end,                 desc = "Find Files" },
+        { "<leader>fr", function() Snacks.picker.recent() end,                desc = "Recent" },
         -- grep
-        { "<leader>fB", function() Snacks.picker.grep_buffers() end, desc = "Grep Open Buffers" },
-        { "<leader>fg", function() Snacks.picker.grep() end, desc = "Grep" },
-        { "<leader>fw", function() Snacks.picker.grep_word() end, desc = "Visual selection or word", mode = { "n", "x" } },
+        { "<leader>fB", function() Snacks.picker.grep_buffers() end,          desc = "Grep Open Buffers" },
+        { "<leader>fg", function() Snacks.picker.grep() end,                  desc = "Grep" },
+        { "<leader>fw", function() Snacks.picker.grep_word() end,             desc = "Visual selection or word", mode = { "n", "x" } },
         -- search
-        { "<leader>fc", function() Snacks.picker.command_history() end, desc = "Command History" },
-        { "<leader>fd", function() Snacks.picker.diagnostics() end, desc = "Diagnostics" },
-        { "<leader>fh", function() Snacks.picker.help() end, desc = "Help Pages" },
-        { "<leader>fu", function() Snacks.picker.resume() end, desc = "Resume" },
-        { "<leader>fp", function() Snacks.picker.projects() end, desc = "Projects" },
-        { "<leader>fj", function() Snacks.picker.jumps() end, desc = "Jumps" },
+        { "<leader>fc", function() Snacks.picker.command_history() end,       desc = "Command History" },
+        { "<leader>fd", function() Snacks.picker.diagnostics() end,           desc = "Diagnostics" },
+        { "<leader>fh", function() Snacks.picker.search_history() end,        desc = "Search History" },
+        { "<leader>fu", function() Snacks.picker.resume() end,                desc = "Resume" },
+        { "<leader>fp", function() Snacks.picker.projects() end,              desc = "Projects" },
+        { "<leader>fj", function() Snacks.picker.jumps() end,                 desc = "Jumps" },
         -- LSP
-        { "gd", function() Snacks.picker.lsp_definitions() end, desc = "Goto Definition" },
-        { "gr", function() Snacks.picker.lsp_references() end, nowait = true, desc = "References" },
-        { "gI", function() Snacks.picker.lsp_implementations() end, desc = "Goto Implementation" },
-        { "gy", function() Snacks.picker.lsp_type_definitions() end, desc = "Goto Type Definition" },
-        { "<leader>fs", function() Snacks.picker.lsp_symbols() end, desc = "LSP Symbols" },
+        { "<leader>fs", function() Snacks.picker.lsp_symbols() end,           desc = "LSP Symbols" },
+        { "<leader>fS", function() Snacks.picker.lsp_workspace_symbols() end, desc = "LSP Workspace Symbols" },
         -- todo comments
-        { "<leader>ft", function() Snacks.picker.todo_comments() end, desc = "Todo" },
+        { "<leader>ft", function() Snacks.picker.todo_comments() end,         desc = "Todo" },
         -- undo
-        { "<leader>u", function() Snacks.picker.undo() end, desc = "Undo" },
+        { "<leader>u",  function() Snacks.picker.undo() end,                  desc = "Undo" },
+        -- explorer
+        { "<leader>fe", function() Snacks.picker.explorer() end,              desc = "Explorer" },
+        -- lazygit
+        { "<leader>gg", function() Snacks.lazygit() end,              desc = "Lazygit" },
     }
 }

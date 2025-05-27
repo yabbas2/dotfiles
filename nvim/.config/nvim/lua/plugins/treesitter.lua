@@ -2,9 +2,9 @@ return {
     {
         "nvim-treesitter/nvim-treesitter",
         build = ":TSUpdate",
-        config = function ()
+        config = function()
             require("nvim-treesitter.configs").setup {
-                ensure_installed = { "python", "c", "cpp", "lua", "vim", "cmake", "css", "dockerfile", "gitignore", "html", "javascript", "json", "markdown", "markdown_inline", "rust", "xml", "regex", "bash", "latex" },
+                ensure_installed = { "python", "c", "cpp", "lua", "vim", "cmake", "css", "dockerfile", "gitignore", "html", "javascript", "json", "markdown", "markdown_inline", "rust", "xml", "regex", "bash", "latex", "tsx", "typescript", "toml", "yaml", "norg", "scss", "svelte", "typst" },
                 highlight = { enable = true },
                 indent = { enable = true },
                 additional_vim_regex_highlighting = false,
@@ -14,7 +14,7 @@ return {
     {
         "nvim-treesitter/nvim-treesitter-textobjects",
         event = "VeryLazy",
-        config = function ()
+        config = function()
             require('nvim-treesitter.configs').setup {
                 textobjects = {
                     select = {
@@ -35,6 +35,12 @@ return {
                             ["ip"] = "@parameter.inner",
                             ["am"] = "@comment.outer",
                             ["im"] = "@comment.inner",
+                        },
+                        selection_modes = {
+                            ['@function.inner'] = 'V',
+                            ['@function.outer'] = 'V',
+                            ['@conditional.outer'] = 'V',
+                            ['@conditional.inner'] = 'V',
                         },
                         include_surrounding_whitespace = false,
                     },

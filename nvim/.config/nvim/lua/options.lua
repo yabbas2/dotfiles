@@ -10,7 +10,7 @@ vim.opt.expandtab = true
 
 -- UI config
 vim.opt.number = true
-vim.opt.relativenumber = false
+vim.opt.relativenumber = true
 vim.opt.cursorline = true
 vim.opt.splitbelow = true
 vim.opt.splitright = true
@@ -26,8 +26,8 @@ vim.opt.ignorecase = true
 vim.opt.smartcase = true
 
 -- Spell checker
--- vim.opt.spell = true
--- vim.opt.spelllang = 'en_us'
+vim.opt.spell = true
+vim.opt.spelllang = 'en_us'
 
 -- misc
 vim.opt.swapfile = false
@@ -58,3 +58,30 @@ vim.g.loaded_netrwPlugin = 1
 vim.g.loaded_netrwSettings = 1
 vim.g.loaded_netrwFileHandlers = 1
 vim.g.loaded_remote_plugins = 1
+
+-- Diagnostics
+vim.diagnostic.config({
+    virtual_lines = {
+        current_line = true
+    },
+    signs = {
+        text = {
+            [vim.diagnostic.severity.ERROR] = "󰅙 ",
+            [vim.diagnostic.severity.WARN] = "󰀦 ",
+            [vim.diagnostic.severity.HINT] = "󰋗 ",
+            [vim.diagnostic.severity.INFO] = "󰋼 ",
+        }
+    },
+})
+
+-- Auto-reload buffers when files get changed externally
+vim.o.autoread = true
+vim.api.nvim_create_autocmd({ "BufEnter", "CursorHold", "CursorHoldI", "FocusGained" }, {
+    command = "if mode() != 'c' | checktime | endif",
+    pattern = { "*" },
+})
+vim.api.nvim_create_autocmd({ "FileChangedShellPost" }, {
+    command = "lua vim.notify('File changed on disk. Buffer reloaded.', vim.log.levels.INFO)",
+    pattern = { "*" },
+})
+

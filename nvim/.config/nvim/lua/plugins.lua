@@ -22,7 +22,6 @@ require("lazy").setup({
         require('plugins.lualine'),
         require('plugins.markdown'),
         require('plugins.mason'),
-        require('plugins.neotree'),
         require('plugins.noice'),
         require('plugins.outline'),
         require('plugins.overseer'),
