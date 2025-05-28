@@ -7,7 +7,7 @@ return {
         require('noice').setup({
             lsp = {
                 hover = { enabled = false },
-                signature = { enabled = false, },
+                signature = { enabled = false },
             },
             presets = {
                 bottom_search = false,

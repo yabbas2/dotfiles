@@ -49,13 +49,13 @@ map("n", "<leader>,", "mmA,<ESC>`m<CMD>delm m<CR>", { desc = "Append comma" })
 
 map("n", "gV", "`[v`]", { desc = "Reselect last yanked area" })
 
-map("v", "<leader>re", '"hy:%s/<C-r>h/<C-r>h/gc<left><left><left>',
-    { desc = "Open search and replace for currently selected text" })
-map("n", "<leader>re", ":%s/<C-r><C-w>/<C-r><C-w>/gc<Left><Left><Left>",
-    { desc = "Open search and replace for word under cursor" })
+map("v", "<leader>re", '"hy:%s/<C-r>h/<C-r>h/gc<left><left><left>', { desc = "Open search and replace for currently selected text" })
+map("n", "<leader>re", ":%s/<C-r><C-w>/<C-r><C-w>/gc<Left><Left><Left>", { desc = "Open search and replace for word under cursor" })
 
 map("n", "<leader>*", "*Ncgn", { desc = "Change word with . repeat" })
 
 map("n", "<leader>se", "<C-w>=", { desc = "Make splits equal" })
 
 map("n", "<leader>w", "<CMD>w<CR>", { desc = "Save buffer" })
+
+map("t", "<Esc>", [[<C-\><C-n>]])

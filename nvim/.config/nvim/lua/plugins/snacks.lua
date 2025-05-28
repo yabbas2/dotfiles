@@ -23,7 +23,7 @@ return {
                     git_hl = true,
                 },
                 git = {
-                    patterns = { "GitSign" },
+                    patterns = { "MiniDiffSign" },
                 },
             },
             words = { enabled = false },
@@ -118,16 +118,19 @@ return {
         { "<leader>fu", function() Snacks.picker.resume() end,                desc = "Resume" },
         { "<leader>fp", function() Snacks.picker.projects() end,              desc = "Projects" },
         { "<leader>fj", function() Snacks.picker.jumps() end,                 desc = "Jumps" },
+        { "<leader>fn", function() Snacks.picker.notifications() end,         desc = "Notification" },
         -- LSP
         { "<leader>fs", function() Snacks.picker.lsp_symbols() end,           desc = "LSP Symbols" },
         { "<leader>fS", function() Snacks.picker.lsp_workspace_symbols() end, desc = "LSP Workspace Symbols" },
-        -- todo comments
-        { "<leader>ft", function() Snacks.picker.todo_comments() end,         desc = "Todo" },
         -- undo
         { "<leader>u",  function() Snacks.picker.undo() end,                  desc = "Undo" },
         -- explorer
-        { "<leader>fe", function() Snacks.picker.explorer() end,              desc = "Explorer" },
+        { "<leader>bb", function() Snacks.picker.explorer() end,              desc = "Explorer" },
         -- lazygit
-        { "<leader>gg", function() Snacks.lazygit() end,              desc = "Lazygit" },
+        { "<leader>gg", function() Snacks.lazygit() end,                      desc = "Lazygit" },
+        -- LSP
+        { "grr",        function() Snacks.picker.lsp_references() end,        desc = "LSP references" },
+        { "gd",         function() Snacks.picker.lsp_definitions() end,       desc = "LSP definitions" },
+        { "gri",        function() Snacks.picker.lsp_implementations() end,   desc = "LSP implementations" },
     }
 }

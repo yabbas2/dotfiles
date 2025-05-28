@@ -1,12 +1,5 @@
 return {
     {
-        "onsails/lspkind-nvim",
-        event = "VeryLazy",
-        config = function ()
-           require('lspkind').setup()
-        end
-    },
-    {
         "hrsh7th/nvim-cmp",
         event = "VeryLazy",
         dependencies = {
@@ -15,72 +8,61 @@ return {
             "hrsh7th/cmp-path",
             "hrsh7th/cmp-buffer",
             "hrsh7th/cmp-cmdline",
-            "saadparwaiz1/cmp_luasnip",
+            "abeldekat/cmp-mini-snippets",
         },
         config = function()
-            local luasnip = require("luasnip")
             local cmp = require("cmp")
             local lspkind = require('lspkind')
 
             cmp.setup({
                 snippet = {
                     expand = function(args)
-                        luasnip.lsp_expand(args.body)
+                        local insert = MiniSnippets.config.expand.insert or MiniSnippets.default_insert
+                        insert({ body = args.body })
+                        cmp.resubscribe({ "TextChangedI", "TextChangedP" })
+                        require("cmp.config").set_onetime({ sources = {} })
                     end,
                 },
                 mapping = cmp.mapping.preset.insert({
-                    ['<C-b>'] = cmp.mapping.scroll_docs( -4),
+                    ['<C-b>'] = cmp.mapping.scroll_docs(-4),
                     ['<C-f>'] = cmp.mapping.scroll_docs(4),
-                    ['<CR>'] = cmp.mapping.confirm({ select = true }),
-                    ["<Tab>"] = cmp.mapping(function(fallback)
+                    ['<C-Space>'] = cmp.mapping.complete(),
+                    ['<C-e>'] = cmp.mapping.abort(),
+                    ['<C-y>'] = cmp.mapping.confirm({ select = true }),
+                    ["<C-n>"] = cmp.mapping(function(fallback)
                         if cmp.visible() then
                             cmp.select_next_item()
-                        elseif luasnip.locally_jumpable(1) then
-                            luasnip.jump(1)
                         else
                             fallback()
                         end
                     end, { "i", "s" }),
-                    ["<S-Tab>"] = cmp.mapping(function(fallback)
+                    ["<C-p>"] = cmp.mapping(function(fallback)
                         if cmp.visible() then
                             cmp.select_prev_item()
-                        elseif luasnip.jumpable(-1) then
-                            luasnip.jump(-1)
                         else
                             fallback()
                         end
                     end, { "i", "s" }),
                 }),
                 formatting = {
-                    format = lspkind.cmp_format({
-                        mode = "symbol_text",
-                        symbol_map = { Codeium = " ", },
-                        menu = ({
-                            codeium = '[AI]',
-                            nvim_lsp = '[Lsp]',
-                            luasnip = '[Luasnip]',
-                            buffer = '[File]',
-                            path = '[Path]',
-                        })
-                    }),
+                    format = lspkind.cmp_format({ mode = "replace", }),
                 },
                 sources = {
-                    { name = "codeium", priority = 1000 },
-                    { name = "nvim_lsp", priority = 500 },
-                    { name = "luasnip", priority = 15 },
-                    { name = "buffer", priority = 1 },
-                    { name = 'render-markdown' },
-                    { name = "path" },
+                    { name = "nvim_lsp", },
+                    { name = "mini_snippets", },
+                    { name = "buffer", },
+                    { name = "render-markdown", },
+                    { name = "path", },
                 },
                 window = {
                     completion = cmp.config.window.bordered({
-                        border = "none",
-                        scrollbar = false,
+                        border = "single",
+                        scrollbar = true,
                         side_padding = 1,
                     }),
                     documentation = cmp.config.window.bordered({
-                        border = "none",
-                        scrollbar = false,
+                        border = "single",
+                        scrollbar = true,
                         side_padding = 1,
                     }),
                 }
@@ -98,20 +80,10 @@ return {
                     { name = "buffer" },
                 },
             })
+            vim.lsp.config('*', {
+                capabilities = vim.tbl_deep_extend('keep', vim.lsp.protocol.make_client_capabilities(),
+                    require("cmp_nvim_lsp").default_capabilities())
+            })
         end,
-    },
-    {
-        "L3MON4D3/LuaSnip",
-        event = "VeryLazy",
-        version = "v2.*",
-        dependencies = { "rafamadriz/friendly-snippets" },
-        config = function ()
-            require("luasnip").setup()
-            require("luasnip.loaders.from_vscode").lazy_load()
-        end
-    },
-    {
-        "rafamadriz/friendly-snippets",
-        event = "VeryLazy",
     },
 }

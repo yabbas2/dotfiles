@@ -8,10 +8,7 @@ return {
                     styles = {
                         comments = "italic",
                     },
-                    modules = {
-                        neogit = false,
-                        gitsigns = false,
-                    },
+                    modules = {},
                 },
             })
             vim.cmd("colorscheme duskfox")

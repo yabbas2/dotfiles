@@ -3,18 +3,20 @@ return {
     dependencies = {
         "nvim-tree/nvim-web-devicons",
     },
-    config = function ()
+    config = function()
         local function lsp_client()
             local buf_client_names = {}
             local buf_clients = vim.lsp.get_clients({ bufnr = 0 })
             for _, client in pairs(buf_clients) do
-                table.insert(buf_client_names, client.name)
+                if client.name ~= 'mini.snippets' then
+                    table.insert(buf_client_names, client.name)
+                end
             end
             return #buf_client_names ~= 0 and buf_client_names[1] or 'no_lsp'
         end
-        require'lualine'.setup {
+        require 'lualine'.setup {
             options = {
-                component_separators = { left = '|', right = '|'},
+                component_separators = { left = '|', right = '|' },
                 section_separators = '',
             },
             sections = {
@@ -48,7 +50,7 @@ return {
                     'filetype',
                     {
                         lsp_client,
-                        icon = { '', align='left' },
+                        icon = { '', align = 'left' },
                     },
                 },
                 lualine_y = {
@@ -58,7 +60,7 @@ return {
                         maxcount = 999,
                         timeout = 5,
                         icons_enabled = true,
-                        icon = { '', align='left' },
+                        icon = { '', align = 'left' },
                     },
                 }
             },
@@ -67,14 +69,14 @@ return {
                 lualine_b = {},
                 lualine_c = {
                     {
-                         'filename',
+                        'filename',
                         symbols = {
                             modified = '~',
                             readonly = '',
                         }
                     },
                 },
-                lualine_x = {'filetype'},
+                lualine_x = { 'filetype' },
                 lualine_y = {},
                 lualine_z = {}
             },
