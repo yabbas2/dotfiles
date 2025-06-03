@@ -2,6 +2,7 @@ return {
     {
         'echasnovski/mini.diff',
         version = false,
+        lazy = false,
         config = function()
             require('mini.diff').setup({
                 view = {
@@ -9,7 +10,10 @@ return {
                     signs = { add = '┃', change = '┃', delete = '-' },
                 }
             })
-        end
+        end,
+        keys = {
+            { '<leader>md', function() MiniDiff.toggle_overlay(0) end, mode = 'n' },
+        }
     },
     {
         'echasnovski/mini.surround',
@@ -52,9 +56,11 @@ return {
         'echasnovski/mini.icons',
         dependencies = { "onsails/lspkind-nvim" },
         version = false,
+        lazy = false,
         config = function()
             require('mini.icons').setup()
-            require('mini.icons').tweak_lsp_kind("replace")
+            MiniIcons.tweak_lsp_kind("replace")
+            MiniIcons.mock_nvim_web_devicons()
             require('lspkind').setup()
         end
     },
@@ -82,13 +88,6 @@ return {
                 directory = vim.fn.stdpath('data') .. '/mini-sessions',
                 file = '',
             })
-        end
-    },
-    {
-        'echasnovski/mini.cursorword',
-        version = false,
-        config = function()
-            require('mini.cursorword').setup()
         end
     },
     {
@@ -120,6 +119,26 @@ return {
                 callback = function()
                     MiniTrailspace.trim()
                 end,
+            })
+        end
+    },
+    {
+        'echasnovski/mini.move',
+        version = false,
+        config = function()
+            require('mini.move').setup({
+                mappings = {
+                    -- visual mode
+                    left = '<M-h>',
+                    right = '<M-l>',
+                    down = '<M-j>',
+                    up = '<M-k>',
+                    -- normal mode
+                    line_left = '<M-h>',
+                    line_right = '<M-l>',
+                    line_down = '<M-j>',
+                    line_up = '<M-k>',
+                },
             })
         end
     },

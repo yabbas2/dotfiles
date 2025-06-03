@@ -1,9 +1,5 @@
 local map = vim.keymap.set
 
--- map('n', '<C-h>', '<C-w>h', { noremap = true, silent = true })
--- map('n', '<C-j>', '<C-w>j', { noremap = true, silent = true })
--- map('n', '<C-k>', '<C-w>k', { noremap = true, silent = true })
--- map('n', '<C-l>', '<C-w>l', { noremap = true, silent = true })
 map("n", "<C-h>", "<CMD>NvimTmuxNavigateLeft<CR>", { silent = true })
 map("n", "<C-j>", "<CMD>NvimTmuxNavigateDown<CR>", { silent = true })
 map("n", "<C-k>", "<CMD>NvimTmuxNavigateUp<CR>", { silent = true })
@@ -13,9 +9,6 @@ map({ 'n', 'i' }, '<F2>', '<CMD>bnext<CR>', { noremap = true, silent = true })
 map({ 'n', 'i' }, '<F1>', '<CMD>bprevious<CR>', { noremap = true, silent = true })
 map({ 'n', 'i' }, '<F4>', '<CMD>tabnext<CR>', { noremap = true, silent = true })
 map({ 'n', 'i' }, '<F3>', '<CMD>tabprevious<CR>', { noremap = true, silent = true })
-
-map("v", "J", ":move '>+1<CR>gv=gv", { desc = 'Move text down' })
-map("v", "K", ":move '<-2<CR>gv=gv", { desc = 'Move text up' })
 
 map("n", "<M-LEFT>", '<CMD>lua require("tmux").resize_left()<CR>', { silent = true })
 map("n", "<M-DOWN>", '<CMD>lua require("tmux").resize_bottom()<CR>', { silent = true })
@@ -41,9 +34,6 @@ map("n", "i", function()
     end
 end, { expr = true, desc = 'Respect indentation' })
 
-map("v", "<", "<gv", { desc = "Keep visual selection when indenting to left" })
-map("v", ">", ">gv", { desc = "Keep visual selection when indenting to right" })
-
 map("n", "<leader>;", "mmA;<ESC>`m<CMD>delm m<CR>", { desc = "Append semicolon" })
 map("n", "<leader>,", "mmA,<ESC>`m<CMD>delm m<CR>", { desc = "Append comma" })
 
@@ -57,5 +47,6 @@ map("n", "<leader>*", "*Ncgn", { desc = "Change word with . repeat" })
 map("n", "<leader>se", "<C-w>=", { desc = "Make splits equal" })
 
 map("n", "<leader>w", "<CMD>w<CR>", { desc = "Save buffer" })
+map("n", "<leader>W", "<CMD>wa<CR>", { desc = "Save all buffers" })
 
 map("t", "<Esc>", [[<C-\><C-n>]])

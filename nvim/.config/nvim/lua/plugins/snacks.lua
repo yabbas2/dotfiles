@@ -59,9 +59,7 @@ return {
                 },
                 chunk = { enabled = false, },
             },
-            explorer = {
-                replace_netrw = true,
-            },
+            explorer = { enabled = false, },
             picker = {
                 sources = {
                     buffers = {
@@ -76,10 +74,6 @@ return {
                     grep = {
                         -- hidden = true,
                         ignored = true,
-                    },
-                    explorer = {
-                        diagnostics = false,
-                        git_status = false,
                     },
                 },
                 layout = {
@@ -124,8 +118,6 @@ return {
         { "<leader>fS", function() Snacks.picker.lsp_workspace_symbols() end, desc = "LSP Workspace Symbols" },
         -- undo
         { "<leader>u",  function() Snacks.picker.undo() end,                  desc = "Undo" },
-        -- explorer
-        { "<leader>bb", function() Snacks.picker.explorer() end,              desc = "Explorer" },
         -- lazygit
         { "<leader>gg", function() Snacks.lazygit() end,                      desc = "Lazygit" },
         -- LSP

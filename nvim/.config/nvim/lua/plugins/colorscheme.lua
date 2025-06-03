@@ -4,7 +4,7 @@ return {
         config = function ()
             require('nightfox').setup({
                 options = {
-                    dim_inactive = true,
+                    -- dim_inactive = true,
                     styles = {
                         comments = "italic",
                     },
