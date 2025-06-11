@@ -5,6 +5,10 @@ return {
         local api = require("nvim-tree.api")
         local nvim_tree = require("nvim-tree")
 
+        ---@diagnostic disable-next-line: unused-local
+        local function label(path)
+            return "File Explorer"
+        end
         local function my_on_attach(bufnr)
             local function opts(desc)
                 return { desc = "nvim-tree: " .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
@@ -61,9 +65,11 @@ return {
                     "Cut",
                     "Hidden",
                 },
-                highlight_opened_files = "icon",
+                highlight_opened_files = "none",
                 highlight_hidden = "name",
                 highlight_bookmarks = "name",
+                root_folder_label = label,
+                group_empty = label,
             },
             filters = {
                 dotfiles = false,

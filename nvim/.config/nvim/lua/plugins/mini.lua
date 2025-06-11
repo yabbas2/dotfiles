@@ -114,10 +114,17 @@ return {
         config = function()
             local MiniTrailspace = require('mini.trailspace')
             MiniTrailspace.setup()
+            local grp = vim.api.nvim_create_augroup("MiniTrailspace", { clear = true })
             vim.api.nvim_create_autocmd("BufWritePre", {
-                group = vim.api.nvim_create_augroup("Strip Whitespace", { clear = true }),
+                group = grp,
                 callback = function()
                     MiniTrailspace.trim()
+                end,
+            })
+            vim.api.nvim_create_autocmd("VimEnter", {
+                group = grp,
+                callback = function()
+                    MiniTrailspace.unhighlight()
                 end,
             })
         end

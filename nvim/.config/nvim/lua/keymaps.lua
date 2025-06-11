@@ -5,11 +5,6 @@ map("n", "<C-j>", "<CMD>NvimTmuxNavigateDown<CR>", { silent = true })
 map("n", "<C-k>", "<CMD>NvimTmuxNavigateUp<CR>", { silent = true })
 map("n", "<C-l>", "<CMD>NvimTmuxNavigateRight<CR>", { silent = true })
 
-map({ 'n', 'i' }, '<F2>', '<CMD>bnext<CR>', { noremap = true, silent = true })
-map({ 'n', 'i' }, '<F1>', '<CMD>bprevious<CR>', { noremap = true, silent = true })
-map({ 'n', 'i' }, '<F4>', '<CMD>tabnext<CR>', { noremap = true, silent = true })
-map({ 'n', 'i' }, '<F3>', '<CMD>tabprevious<CR>', { noremap = true, silent = true })
-
 map("n", "<M-LEFT>", '<CMD>lua require("tmux").resize_left()<CR>', { silent = true })
 map("n", "<M-DOWN>", '<CMD>lua require("tmux").resize_bottom()<CR>', { silent = true })
 map("n", "<M-UP>", '<CMD>lua require("tmux").resize_top()<CR>', { silent = true })
@@ -48,5 +43,8 @@ map("n", "<leader>se", "<C-w>=", { desc = "Make splits equal" })
 
 map("n", "<leader>w", "<CMD>w<CR>", { desc = "Save buffer" })
 map("n", "<leader>W", "<CMD>wa<CR>", { desc = "Save all buffers" })
+
+map("n", "n", "nzzzv", { desc = "Next search result centered" })
+map("n", "N", "Nzzzv", { desc = "Previous search result centered" })
 
 map("t", "<Esc>", [[<C-\><C-n>]])

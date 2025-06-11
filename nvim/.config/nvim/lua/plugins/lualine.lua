@@ -1,20 +1,19 @@
 return {
     'nvim-lualine/lualine.nvim',
     config = function()
-        local function lsp_client()
-            local buf_client_names = {}
-            local buf_clients = vim.lsp.get_clients({ bufnr = 0 })
-            for _, client in pairs(buf_clients) do
-                if client.name ~= 'mini.snippets' then
-                    table.insert(buf_client_names, client.name)
-                end
-            end
-            return #buf_client_names ~= 0 and buf_client_names[1] or 'no_lsp'
-        end
+        -- custom extensions
+        local codecompanion = {
+            sections = {
+                lualine_x = { require('plugins.codecompanion_lualine') }
+            },
+            filetypes = { 'codecompanion' }
+        }
+        -- setup
         require 'lualine'.setup {
             options = {
                 component_separators = { left = '|', right = '|' },
                 section_separators = '',
+                theme = "catppuccin",
             },
             sections = {
                 lualine_b = {
@@ -29,25 +28,17 @@ return {
                         },
                     },
                 },
-                lualine_c = {
-                    {
-                        'filename',
-                        file_status = true,
-                        path = 2,
-                        shorting_target = 40,
-                        symbols = {
-                            modified = '~',
-                            readonly = '',
-                        }
-                    }
-                },
+                lualine_c = {},
                 lualine_x = {
                     'encoding',
                     'fileformat',
-                    'filetype',
                     {
-                        lsp_client,
-                        icon = { '', align = 'left' },
+                        'filetype',
+                        icon_only = true,
+                    },
+                    {
+                        'lsp_status',
+                        ignore_lsp = { 'mini.snippets' },
                     },
                 },
                 lualine_y = {
@@ -77,28 +68,32 @@ return {
                 lualine_y = {},
                 lualine_z = {}
             },
-            extensions = { 'nvim-dap-ui', 'overseer', 'mason', 'quickfix', 'symbols-outline' },
+            extensions = { 'nvim-dap-ui', 'overseer', 'mason', 'quickfix', 'nvim-tree', 'lazy', codecompanion },
             tabline = {
-                lualine_a = {
+                lualine_a = {},
+                lualine_b = {},
+                lualine_c = {
+                    '%=',
                     {
-                        'tabs',
+                        function() return vim.api.nvim_get_current_tabpage() end,
+                        icon = { '󰓹', align = 'left' },
+                    },
+                    {
+                        'filename',
+                        file_status = true,
+                        path = 2,
+                        shorting_target = 40,
                         symbols = {
                             modified = '~',
+                            readonly = '',
                         },
+                        fmt = function(name, context) return name .. ' |' end,
+                        icon = { '', align = 'left' },
                     },
                 },
-                lualine_b = {},
-                lualine_c = {},
                 lualine_x = {},
                 lualine_y = {},
-                lualine_z = {
-                    {
-                        'buffers',
-                        symbols = {
-                            alternate_file = '',
-                        },
-                    },
-                }
+                lualine_z = {}
             }
         }
     end

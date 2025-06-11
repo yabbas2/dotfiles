@@ -6,9 +6,11 @@ return {
     config = function ()
         require('noice').setup({
             lsp = {
+                progress = { enabled = false },
                 hover = { enabled = false },
                 signature = { enabled = false },
             },
+            notify = { enabled = false },
             presets = {
                 bottom_search = false,
                 command_palette = false,
