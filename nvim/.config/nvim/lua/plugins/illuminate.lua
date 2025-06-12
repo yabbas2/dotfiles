@@ -8,6 +8,7 @@ return {
             filetypes_denylist = {
 				'git',
 				'NvimTree',
+				'minifiles',
 			},
             providers = {
                 'regex',

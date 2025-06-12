@@ -149,4 +149,18 @@ return {
             })
         end
     },
+    {
+        'echasnovski/mini.files',
+        version = false,
+        config = function()
+            require('mini.files').setup({
+                options = {
+                    permanent_delete = false,
+                },
+            })
+        end,
+        keys = {
+            { "<leader>bb", "<CMD>lua require('mini.files').open()<CR>", mode = "n" }
+        }
+    },
 }

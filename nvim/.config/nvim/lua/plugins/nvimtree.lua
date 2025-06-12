@@ -98,6 +98,6 @@ return {
         vim.cmd([[hi NvimTreeBookmarkHL guisp=orange  gui=underline]])
     end,
     keys = {
-        { "<leader>bb", "<CMD>lua require('nvim-tree.api').tree.toggle()<CR>", mode = "n" }
+        { "<leader>nt", "<CMD>lua require('nvim-tree.api').tree.toggle()<CR>", mode = "n" }
     }
 }

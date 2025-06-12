@@ -67,14 +67,6 @@ return {
                         focus = "list",
                         sort_lastused = true,
                     },
-                    files = {
-                        -- hidden = true,
-                        ignored = true,
-                    },
-                    grep = {
-                        -- hidden = true,
-                        ignored = true,
-                    },
                     git_branches = {
                         layout = { preset = "select" },
                     }
