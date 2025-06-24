@@ -4,6 +4,9 @@ vim.lsp.enable({
     'lua_ls',
     'lemminx',
     'jsonls',
+    'cssls',
+    'html',
+    'ts_ls',
 })
 
 vim.diagnostic.config({
