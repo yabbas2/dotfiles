@@ -18,18 +18,18 @@ return {
                 strategies = {
                     chat = {
                         adapter = "gemini",
-                        model = "gemini-2.5-flash-preview-05-20",
+                        model = "gemini-2.5-flash",
                         roles = {
                             user = " " .. user:sub(1, 1):upper() .. user:sub(2),
                         },
                     },
                     inline = {
                         adapter = "gemini",
-                        model = "gemini-2.5-flash-preview-05-20",
+                        model = "gemini-2.5-flash",
                     },
                     cmd = {
                         adapter = "gemini",
-                        model = "gemini-2.5-flash-preview-05-20",
+                        model = "gemini-2.5-flash",
                     }
                 },
                 display = {

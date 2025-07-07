@@ -20,10 +20,11 @@ return {
                 },
                 cmp = { enable_auto_complete = false, },
                 blink = { enable_auto_complete = false, },
+                notify = false,
                 provider = 'gemini',
                 provider_options = {
                     gemini = {
-                        model = 'gemini-2.5-flash-preview-05-20',
+                        model = 'gemini-2.0-flash',
                         api_key = 'GEMINI_API_KEY',
                         optional = {
                             generationConfig = {
