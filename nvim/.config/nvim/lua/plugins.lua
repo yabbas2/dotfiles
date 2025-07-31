@@ -1,21 +1,22 @@
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
-  vim.fn.system({
-    "git",
-    "clone",
-    "--filter=blob:none",
-    "https://github.com/folke/lazy.nvim.git",
-    "--branch=stable",
-    lazypath,
-  })
+    vim.fn.system({
+        "git",
+        "clone",
+        "--filter=blob:none",
+        "https://github.com/folke/lazy.nvim.git",
+        "--branch=stable",
+        lazypath,
+    })
 end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-   spec = {
+    spec = {
         require('plugins.colorscheme'),
         require('plugins.notify'),
         require('plugins.minuet'),
+        require('plugins.windsurf'),
         require('plugins.codecompanion'),
         require('plugins.lualine'),
         require('plugins.markdown'),
@@ -35,6 +36,8 @@ require("lazy").setup({
         require('plugins.treesitter'),
         require('plugins.ufo'),
         require('plugins.illuminate'),
+        require('plugins.floaterm'),
+        require('plugins.vgit'),
     },
     rocks = { enabled = false },
 })

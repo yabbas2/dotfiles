@@ -40,7 +40,7 @@ return {
                     ufo = true,
                     overseer = true,
                     render_markdown = true,
-                    native_lsp = { enabled = true },
+                    native_lsp = { enabled = false },
                     mini = {
                         enabled = true,
                         indentscope_color = "",

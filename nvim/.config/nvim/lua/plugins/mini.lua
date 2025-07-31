@@ -1,21 +1,5 @@
 return {
     {
-        'echasnovski/mini.diff',
-        version = false,
-        lazy = false,
-        config = function()
-            require('mini.diff').setup({
-                view = {
-                    style = "sign",
-                    signs = { add = '┃', change = '┃', delete = '-' },
-                }
-            })
-        end,
-        keys = {
-            { '<leader>md', function() MiniDiff.toggle_overlay(0) end, mode = 'n' },
-        }
-    },
-    {
         'echasnovski/mini.surround',
         version = false,
         config = function()
@@ -97,7 +81,7 @@ return {
             local hipatterns = require('mini.hipatterns')
             hipatterns.setup({
                 highlighters = {
-                    fix     = { pattern = '%f[%w]()FIX()%f[%W]', group = 'MiniHipatternsFixme' },
+                    fix       = { pattern = '%f[%w]()FIX()%f[%W]', group = 'MiniHipatternsFixme' },
                     fixme     = { pattern = '%f[%w]()FIXME()%f[%W]', group = 'MiniHipatternsFixme' },
                     hack      = { pattern = '%f[%w]()HACK()%f[%W]', group = 'MiniHipatternsHack' },
                     warn      = { pattern = '%f[%w]()WARNING()%f[%W]', group = 'MiniHipatternsHack' },
@@ -157,6 +141,21 @@ return {
             require('mini.files').setup({
                 options = {
                     permanent_delete = false,
+                },
+                mappings = {
+                    close       = 'q',
+                    go_in       = '<CR>',
+                    go_in_plus  = '',
+                    go_out      = '<BS>',
+                    go_out_plus = '',
+                    mark_goto   = "'",
+                    mark_set    = 'm',
+                    reset       = '<ESC>',
+                    reveal_cwd  = '@',
+                    show_help   = 'g?',
+                    synchronize = '=',
+                    trim_left   = '<',
+                    trim_right  = '>',
                 },
             })
         end,

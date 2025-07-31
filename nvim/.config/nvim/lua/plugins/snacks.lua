@@ -23,7 +23,7 @@ return {
                     git_hl = true,
                 },
                 git = {
-                    patterns = { "MiniDiffSign" },
+                    patterns = { "vgit_status" },
                 },
             },
             words = { enabled = false },
@@ -186,6 +186,5 @@ return {
         { "<leader>fS",      function() Snacks.picker.lsp_workspace_symbols() end, desc = "LSP Workspace Symbols" },
         -- git
         { "<leader>gg",      function() Snacks.lazygit() end,                      desc = "Lazygit" },
-        { "<leader>gb",      function() Snacks.picker.git_branches() end,          desc = "Git Branches" },
     }
 }
