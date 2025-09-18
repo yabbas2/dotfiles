@@ -106,8 +106,8 @@ return {
                 },
                 previewers = {
                     file = {
-                        max_size = 2024 * 2024,
-                        max_line_length = 1000,
+                        max_size = 4096 * 4096,
+                        max_line_length = 100000,
                     },
                 },
                 debug = {

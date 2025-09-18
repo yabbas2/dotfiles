@@ -9,11 +9,13 @@ return {
             local user = vim.env.USER or "User"
             require("codecompanion").setup({
                 adapters = {
-                    gemini = function()
-                        return require("codecompanion.adapters").extend("gemini", {
-                            env = { api_key = vim.env.GEMINI_API_KEY, }
-                        })
-                    end,
+                    http = {
+                        gemini = function()
+                            return require("codecompanion.adapters").extend("gemini", {
+                                env = { api_key = vim.env.GEMINI_API_KEY, }
+                            })
+                        end,
+                    },
                 },
                 strategies = {
                     chat = {
@@ -50,8 +52,8 @@ return {
         end,
         keys = {
             { "<leader>aa", "<CMD>CodeCompanionChat Toggle<CR>", mode = { "n" } },
-            { "<leader>ag", "<CMD>CodeCompanionChat Add<CR>", mode = { "v" } },
-            { "<leader>ap", "<CMD>CodeCompanionActions<CR>", mode = { "n" } },
+            { "<leader>ag", "<CMD>CodeCompanionChat Add<CR>",    mode = { "v" } },
+            { "<leader>ap", "<CMD>CodeCompanionActions<CR>",     mode = { "n" } },
         }
     }
 }
