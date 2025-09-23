@@ -11,7 +11,7 @@ return {
                 { mode = 'n', key = '<leader>gs', handler = function() require('vgit').buffer_hunk_stage() end },
                 { mode = 'n', key = '<leader>gr', handler = function() require('vgit').buffer_hunk_reset() end },
                 { mode = 'n', key = '<leader>gp', handler = function() require('vgit').buffer_hunk_preview() end },
-                { mode = 'n', key = '<leader>gb', handler = function() require('vgit').toggle_live_blame() end },
+                { mode = 'n', key = '<leader>gB', handler = function() require('vgit').toggle_live_blame() end },
                 { mode = 'n', key = '<leader>gf', handler = function() require('vgit').buffer_diff_preview() end },
                 { mode = 'n', key = '<leader>gh', handler = function() require('vgit').buffer_history_preview() end },
                 { mode = 'n', key = '<leader>gu', handler = function() require('vgit').buffer_reset() end },
@@ -19,6 +19,9 @@ return {
                 { mode = 'n', key = '<leader>gx', handler = function() require('vgit').toggle_diff_preference() end },
                 { mode = 'n', key = '<leader>gl', handler = function() require('vgit').project_logs_preview() end },
                 { mode = 'n', key = '<leader>gt', handler = function() require('vgit').project_stash_preview() end },
+                { mode = 'n', key = '<leader>gc', handler = function() require('vgit').buffer_conflict_accept_current() end },
+                { mode = 'n', key = '<leader>gi', handler = function() require('vgit').buffer_conflict_accept_incoming() end },
+                { mode = 'n', key = '<leader>gb', handler = function() require('vgit').buffer_conflict_accept_both() end },
             },
             settings = {
                 live_blame = {
