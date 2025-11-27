@@ -48,3 +48,6 @@ map("n", "n", "nzzzv", { desc = "Next search result centered" })
 map("n", "N", "Nzzzv", { desc = "Previous search result centered" })
 
 map("t", "<Esc>", [[<C-\><C-n>]])
+
+map("n", "<leader>tn", "<CMD>tabnext<CR>", { desc = "Next tab" })
+map("n", "<leader>tp", "<CMD>tabprevious<CR>", { desc = "Previous tab" })

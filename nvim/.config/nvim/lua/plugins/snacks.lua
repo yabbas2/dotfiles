@@ -23,7 +23,7 @@ return {
                     git_hl = true,
                 },
                 git = {
-                    patterns = { "vgit_status" },
+                    patterns = { "GitSign" },
                 },
             },
             words = { enabled = false },

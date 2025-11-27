@@ -15,6 +15,7 @@ require("lazy").setup({
     spec = {
         require('plugins.colorscheme'),
         require('plugins.notify'),
+        require('plugins.gitsigns'),
         require('plugins.minuet'),
         require('plugins.windsurf'),
         require('plugins.codecompanion'),
@@ -37,7 +38,7 @@ require("lazy").setup({
         require('plugins.ufo'),
         require('plugins.illuminate'),
         require('plugins.floaterm'),
-        require('plugins.vgit'),
+        require('plugins.diffview'),
     },
     rocks = { enabled = false },
 })
