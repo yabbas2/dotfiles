@@ -13,7 +13,7 @@ return {
             options = {
                 component_separators = { left = '|', right = '|' },
                 section_separators = '',
-                theme = "catppuccin",
+                theme = "catppuccin-nvim",
             },
             sections = {
                 lualine_b = {
