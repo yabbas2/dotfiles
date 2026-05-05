@@ -14,6 +14,21 @@ if vim.fn.has("wsl") == 1 then
     }
 end
 
+-- clipboard for SSH on VM
+if vim.fn.has("unix") == 1 and vim.fn.system("echo -n $XDG_SESSION_TYPE") == "tty" then
+    vim.g.clipboard = {
+        name = 'OSC 52',
+        copy = {
+            ["+"] = require('vim.ui.clipboard.osc52').copy('+'),
+            ["*"] = require('vim.ui.clipboard.osc52').copy('*'),
+        },
+        paste = {
+            ["+"] = require("vim.ui.clipboard.osc52").paste("+"),
+            ["*"] = require("vim.ui.clipboard.osc52").paste("*"),
+        },
+    }
+end
+
 -- Dot files clean on MAC
 local dotclean_state = false
 vim.api.nvim_create_user_command('DotcleanToggle', function()
