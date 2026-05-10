@@ -3,7 +3,6 @@ return {
         "olimorris/codecompanion.nvim",
         dependencies = {
             "nvim-lua/plenary.nvim",
-            "nvim-treesitter/nvim-treesitter",
         },
         config = function()
             local user = vim.env.USER or "User"
