@@ -10,11 +10,14 @@ return {
                     vim.keymap.set({'n', 't'}, '<C-h>', require('floaterm.api').switch_wins, { buffer = buf })
                     vim.keymap.set({'n', 't'}, '<C-l>', require('floaterm.api').switch_wins, { buffer = buf })
                     vim.keymap.set('n', '<esc>', "<CMD>FloatermToggle<CR>", { buffer = buf })
+                    vim.keymap.set('n', 'q', "<CMD>FloatermToggle<CR>", { buffer = buf })
+                    vim.keymap.set('n', 'd', require('floaterm.api').delete_term, { buffer = buf })
                 end,
                 term = function(buf)
                     vim.keymap.set({'n', 't'}, '<C-h>', require('floaterm.api').switch_wins, { buffer = buf })
                     vim.keymap.set({'n', 't'}, '<C-l>', require('floaterm.api').switch_wins, { buffer = buf })
                     vim.keymap.set('n', '<esc>', "<CMD>FloatermToggle<CR>", { buffer = buf })
+                    vim.keymap.set('n', 'q', "<CMD>FloatermToggle<CR>", { buffer = buf })
                 end,
             }
         })
