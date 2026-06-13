@@ -11,7 +11,7 @@ return {
         version = false,
         config = function()
             require('mini.pairs').setup({
-                modes = { insert = true, command = true, terminal = true },
+                modes = { insert = true, command = false, terminal = false },
             })
         end
     },
@@ -163,4 +163,11 @@ return {
             { "<leader>bb", "<CMD>lua require('mini.files').open()<CR>", mode = "n" }
         }
     },
+    {
+        'echasnovski/mini.ai',
+        version = false,
+        config = function()
+            require('mini.ai').setup()
+        end,
+    }
 }
