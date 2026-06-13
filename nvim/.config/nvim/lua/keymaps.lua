@@ -1,15 +1,5 @@
 local map = vim.keymap.set
 
-map("n", "<C-h>", "<CMD>NvimTmuxNavigateLeft<CR>", { silent = true })
-map("n", "<C-j>", "<CMD>NvimTmuxNavigateDown<CR>", { silent = true })
-map("n", "<C-k>", "<CMD>NvimTmuxNavigateUp<CR>", { silent = true })
-map("n", "<C-l>", "<CMD>NvimTmuxNavigateRight<CR>", { silent = true })
-
-map("n", "<M-LEFT>", '<CMD>lua require("tmux").resize_left()<CR>', { silent = true })
-map("n", "<M-DOWN>", '<CMD>lua require("tmux").resize_bottom()<CR>', { silent = true })
-map("n", "<M-UP>", '<CMD>lua require("tmux").resize_top()<CR>', { silent = true })
-map("n", "<M-RIGHT>", '<CMD>lua require("tmux").resize_right()<CR>', { silent = true })
-
 map("n", "<leader>sh", "<CMD>vsplit<CR>", { noremap = true, silent = true })
 map("n", "<leader>sv", "<CMD>split<CR>", { noremap = true, silent = true })
 
