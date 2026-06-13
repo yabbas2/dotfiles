@@ -17,7 +17,7 @@ ZSH_THEME="spaceship"
 # If set to an empty array, this variable will have no effect.
 # ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
 
-DEFAULT_USER="yabbas"
+DEFAULT_USER=""
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -106,15 +106,6 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias vim='nvim'
-
-# OS-dependent configuration
-if [[ $(uname) == "Darwin" ]]; then
-    [ -f "$ZSH_CUSTOM"/os/darwin.zsh ] && source "$ZSH_CUSTOM"/os/darwin.zsh
-elif [[ $(uname) == "Linux" ]]; then
-    [ -f "$ZSH_CUSTOM"/os/linux.zsh ] && source "$ZSH_CUSTOM"/os/linux.zsh
-else
-    echo 'Unknown OS!'
-fi
 
 # Project-based env variables
 [ -f "$HOME"/.zshenv ] && source "$HOME"/.zshenv
