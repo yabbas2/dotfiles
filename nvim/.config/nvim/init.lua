@@ -1,5 +1,4 @@
 require('options')
 require('keymaps')
 require('lsp')
-require('plugins')
 require('tweaks')
