@@ -41,3 +41,6 @@ map("t", "<Esc>", [[<C-\><C-n>]])
 
 map("n", "<leader>tn", "<CMD>tabnext<CR>", { desc = "Next tab" })
 map("n", "<leader>tp", "<CMD>tabprevious<CR>", { desc = "Previous tab" })
+map("n", "<leader>tq", "<CMD>tabclose<CR>", { desc = "Close tab" })
+map("n", "<leader>tc", "<CMD>tabnew<CR>", { desc = "New tab" })
+map("n", "<leader>tt", "<CMD>tabnew<CR><CMD>terminal<CR>", { desc = "New terminal tab" })

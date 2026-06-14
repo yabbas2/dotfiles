@@ -120,3 +120,6 @@ vim.keymap.set("n", "<leader>bb", function() require('mini.files').open() end, {
 
 vim.pack.add({ 'https://github.com/echasnovski/mini.ai' })
 require('mini.ai').setup()
+
+vim.pack.add({ 'https://github.com/nvim-mini/mini.starter' })
+require('mini.starter').setup()
