@@ -124,6 +124,10 @@ require('snacks').setup({
             },
         },
     },
+    terminal = {
+        start_insert = false,
+        auto_insert = false,
+    },
     styles = {},
 })
 
@@ -148,3 +152,52 @@ vim.keymap.set("n", "<leader>fj", function() Snacks.picker.jumps() end)
 vim.keymap.set("n", "<leader>u", function() Snacks.picker.undo() end)
 vim.keymap.set("n", "<leader>gg", function() Snacks.lazygit() end)
 vim.keymap.set("n", "<leader>q", function() Snacks.bufdelete() end)
+
+vim.keymap.set("n", "<leader>tt", function()
+        local win = vim.api.nvim_get_current_win()
+        local width = vim.api.nvim_win_get_width(win)
+        local height = vim.api.nvim_win_get_height(win)
+        local position = width > (height * 2) and "right" or "bottom"
+        local nof_terms = #Snacks.terminal.list()
+
+        Snacks.terminal.open(nil, {
+            count = nof_terms + 1,
+            win = {
+                style = "terminal",
+                position = position,
+                relative = "win",
+            },
+        })
+    end,
+    { noremap = true, silent = true })
+
+vim.keymap.set("n", "<leader>ft", function()
+        local terms = Snacks.terminal.list()
+        if #terms == 0 then
+            vim.notify("No open terminals", vim.log.levels.INFO)
+            return
+        end
+
+        Snacks.picker.pick({
+            title = "Open Terminals",
+            layout = "vscode",
+            items = vim.tbl_map(function(t)
+                return {
+                    text = t.buf_name or ("Terminal " .. t.id),
+                    term = t,
+                }
+            end, terms),
+            format = function(item)
+                return { { item.text, "SnacksPickerFile" } }
+            end,
+            confirm = function(picker, item)
+                picker:close()
+                if item.term.opts.show then
+                    item.term:focus()
+                else
+                    item.term:toggle()
+                end
+            end,
+        })
+    end,
+    { noremap = true, silent = true })

@@ -60,3 +60,10 @@ vim.api.nvim_create_autocmd({ "FileChangedShellPost" }, {
     command = "lua vim.notify('File changed on disk. Buffer reloaded.', vim.log.levels.INFO)",
     pattern = { "*" },
 })
+
+-- Ctrl-l in terminal
+vim.api.nvim_create_autocmd("TermEnter", {
+  callback = function(ev)
+    vim.keymap.set("t", "<c-l>", "<c-l>", { buffer = ev.buf, nowait = true })
+  end,
+})

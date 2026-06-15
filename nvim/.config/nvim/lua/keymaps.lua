@@ -44,3 +44,8 @@ map("n", "<leader>tp", "<CMD>tabprevious<CR>", { desc = "Previous tab" })
 map("n", "<leader>tq", "<CMD>tabclose<CR>", { desc = "Close tab" })
 map("n", "<leader>tc", "<CMD>tabnew<CR>", { desc = "New tab" })
 map("n", "<leader>tt", "<CMD>tabnew<CR><CMD>terminal<CR>", { desc = "New terminal tab" })
+
+local moves = { h = "right", j = "up", k = "down", l = "left" }
+for key, dir in pairs(moves) do
+  vim.keymap.set({ "n", "t" }, "<C-" .. key .. ">", "<C-w>" .. key, { desc = "Move to " .. dir .. " window" })
+end
