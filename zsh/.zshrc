@@ -106,5 +106,8 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-# Project-based env variables
+# custom env variables
 [ -f "$HOME"/.zshenv ] && source "$HOME"/.zshenv
+
+# neofetch
+[ -d "$HOME"/.config/neofetch ] && neofetch
