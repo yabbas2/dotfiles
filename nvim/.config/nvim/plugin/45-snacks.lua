@@ -171,6 +171,15 @@ vim.keymap.set("n", "<leader>tt", function()
     end,
     { noremap = true, silent = true })
 
+vim.keymap.set("n", "<leader>tf", function()
+    Snacks.terminal.open(nil, {
+        win = {
+            style = "float",
+            border = "single",
+        }
+    })
+end, { desc = "Toggle Floating Terminal" })
+
 vim.keymap.set("n", "<leader>ft", function()
         local terms = Snacks.terminal.list()
         if #terms == 0 then
