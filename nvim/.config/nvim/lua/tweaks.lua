@@ -29,7 +29,7 @@ if vim.fn.has("unix") == 1 and vim.fn.system("echo -n $XDG_SESSION_TYPE") == "tt
     }
 end
 
--- Dot files clean on MAC
+-- Dot files clean on macos while using sshfs
 local dotclean_state = false
 vim.api.nvim_create_user_command('DotcleanToggle', function()
     if vim.fn.has('macunix') then
@@ -67,3 +67,18 @@ vim.api.nvim_create_autocmd("TermEnter", {
     vim.keymap.set("t", "<c-l>", "<c-l>", { buffer = ev.buf, nowait = true })
   end,
 })
+
+-- Tab rename command
+vim.api.nvim_create_user_command('TabRename', function(opts)
+    if opts.args ~= "" then
+        vim.t.tabname = opts.args
+    else
+        vim.ui.input({ prompt = "New tab name: ", default = vim.t.tabname or "" }, function(input)
+            if input and #input ~= 0 then
+                vim.t.tabname = input
+            end
+        end)
+    end
+    -- Force the tabline to refresh
+    vim.cmd('redrawtabline')
+end, { nargs = "?" })

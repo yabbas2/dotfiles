@@ -124,10 +124,7 @@ require('snacks').setup({
             },
         },
     },
-    terminal = {
-        start_insert = false,
-        auto_insert = false,
-    },
+    terminal = { enabled = false },
     styles = {},
 })
 
@@ -153,60 +150,34 @@ vim.keymap.set("n", "<leader>u", function() Snacks.picker.undo() end)
 vim.keymap.set("n", "<leader>gg", function() Snacks.lazygit() end)
 vim.keymap.set("n", "<leader>q", function() Snacks.bufdelete() end)
 
-vim.keymap.set("n", "<leader>tt", function()
-        local win = vim.api.nvim_get_current_win()
-        local width = vim.api.nvim_win_get_width(win)
-        local height = vim.api.nvim_win_get_height(win)
-        local position = width > (height * 2) and "right" or "bottom"
-        local nof_terms = #Snacks.terminal.list()
-
-        Snacks.terminal.open(nil, {
-            count = nof_terms + 1,
-            win = {
-                style = "terminal",
-                position = position,
-                relative = "win",
-            },
-        })
-    end,
-    { noremap = true, silent = true })
-
-vim.keymap.set("n", "<leader>tf", function()
-    Snacks.terminal.open(nil, {
-        win = {
-            style = "float",
-            border = "single",
-        }
-    })
-end, { desc = "Toggle Floating Terminal" })
-
 vim.keymap.set("n", "<leader>ft", function()
-        local terms = Snacks.terminal.list()
-        if #terms == 0 then
-            vim.notify("No open terminals", vim.log.levels.INFO)
-            return
-        end
+    local tabs = {}
+    local tabpages = vim.api.nvim_list_tabpages()
 
-        Snacks.picker.pick({
-            title = "Open Terminals",
-            layout = "vscode",
-            items = vim.tbl_map(function(t)
-                return {
-                    text = t.buf_name or ("Terminal " .. t.id),
-                    term = t,
-                }
-            end, terms),
-            format = function(item)
-                return { { item.text, "SnacksPickerFile" } }
-            end,
-            confirm = function(picker, item)
-                picker:close()
-                if item.term.opts.show then
-                    item.term:focus()
-                else
-                    item.term:toggle()
-                end
-            end,
+    for i, tabpage in ipairs(tabpages) do
+        local cur_win = vim.api.nvim_tabpage_get_win(tabpage)
+        local buf = vim.api.nvim_win_get_buf(cur_win)
+        local bufname = vim.api.nvim_buf_get_name(buf)
+        local tabname = vim.t[tabpage].tabname or (bufname ~= "" and vim.fn.fnamemodify(bufname, ":t") or "[No Name]")
+
+        table.insert(tabs, {
+            idx = i,
+            text = string.format("%d: %s", i, tabname),
+            tabnr = i,
         })
-    end,
-    { noremap = true, silent = true })
+    end
+
+    Snacks.picker.pick({
+        title = "Tabs",
+        layout = "vscode",
+        focus = "list",
+        items = tabs,
+        format = "text",
+        confirm = function(picker, item)
+            picker:close()
+            if item then
+                vim.cmd(string.format("tabnext %d", item.tabnr))
+            end
+        end,
+    })
+end, { desc = "Snacks: List Tabs" })

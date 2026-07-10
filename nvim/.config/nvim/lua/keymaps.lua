@@ -47,5 +47,7 @@ map("n", "<leader>tt", "<CMD>tabnew<CR><CMD>terminal<CR>", { desc = "New termina
 
 local moves = { h = "right", j = "up", k = "down", l = "left" }
 for key, dir in pairs(moves) do
-  vim.keymap.set({ "n", "t" }, "<C-" .. key .. ">", "<C-w>" .. key, { desc = "Move to " .. dir .. " window" })
+  map({ "n", "t" }, "<C-" .. key .. ">", "<C-w>" .. key, { desc = "Move to " .. dir .. " window" })
 end
+
+map('n', '<leader>tt', ':tabnew | terminal<CR>', { desc = 'Open terminal in new tab' })
