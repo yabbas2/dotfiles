@@ -45,9 +45,7 @@ map("n", "<leader>tq", "<CMD>tabclose<CR>", { desc = "Close tab" })
 map("n", "<leader>tc", "<CMD>tabnew<CR>", { desc = "New tab" })
 map("n", "<leader>tt", "<CMD>tabnew<CR><CMD>terminal<CR>", { desc = "New terminal tab" })
 
-local moves = { h = "right", j = "up", k = "down", l = "left" }
+local moves = { h = "left", j = "up", k = "down", l = "right" }
 for key, dir in pairs(moves) do
   map({ "n", "t" }, "<C-" .. key .. ">", "<C-w>" .. key, { desc = "Move to " .. dir .. " window" })
 end
-
-map('n', '<leader>tt', ':tabnew | terminal<CR>', { desc = 'Open terminal in new tab' })

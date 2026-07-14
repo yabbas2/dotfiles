@@ -66,7 +66,22 @@ require('snacks').setup({
             },
             git_branches = {
                 layout = { preset = "select" },
-            }
+            },
+            files = {
+                follow = true,
+                hidden = true,
+                ignored = true,
+            },
+            grep = {
+                follow = true,
+                hidden = true,
+                ignored = true,
+            },
+            grep_word = {
+                follow = true,
+                hidden = true,
+                ignored = true,
+            },
         },
         layout = {
             cycle = true,
