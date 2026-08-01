@@ -118,8 +118,5 @@ require('mini.files').setup({
 })
 vim.keymap.set("n", "<leader>bb", function() require('mini.files').open() end, { noremap = true, silent = true })
 
-vim.pack.add({ 'https://github.com/echasnovski/mini.ai' })
-require('mini.ai').setup()
-
 vim.pack.add({ 'https://github.com/nvim-mini/mini.starter' })
 require('mini.starter').setup()
