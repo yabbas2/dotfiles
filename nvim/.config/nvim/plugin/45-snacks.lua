@@ -162,7 +162,7 @@ vim.keymap.set("n", "<leader><space>", function() Snacks.picker.buffers() end)
 vim.keymap.set("n", "<leader>fu", function() Snacks.picker.resume() end)
 vim.keymap.set("n", "<leader>fj", function() Snacks.picker.jumps() end)
 vim.keymap.set("n", "<leader>u", function() Snacks.picker.undo() end)
-vim.keymap.set("n", "<leader>gg", function() Snacks.lazygit() end)
+vim.keymap.set("n", "<leader>lg", function() Snacks.lazygit() end)
 vim.keymap.set("n", "<leader>q", function() Snacks.bufdelete() end)
 
 vim.keymap.set("n", "<leader>ft", function()
