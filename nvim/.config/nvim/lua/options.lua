@@ -29,7 +29,7 @@ vim.opt.smartcase = true
 -- vim.opt.spell = true
 -- vim.opt.spelllang = 'en_us'
 
--- misc
+-- Misc
 vim.opt.swapfile = false
 vim.opt.backup = false
 vim.opt.laststatus = 3
@@ -59,3 +59,12 @@ vim.g.loaded_netrwSettings = 1
 vim.g.loaded_netrwFileHandlers = 1
 vim.g.loaded_remote_plugins = 1
 
+-- Folding/Unfolding
+-- foldAll = zM
+-- unfoldAll = zR
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+vim.opt.foldlevel = 99
+vim.opt.fillchars = "foldopen:▼,foldsep:│,foldclose:▶"
+vim.opt.foldcolumn = "1"
+vim.opt.foldenable = true
