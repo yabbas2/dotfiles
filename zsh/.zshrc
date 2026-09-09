@@ -109,5 +109,5 @@ source $ZSH/oh-my-zsh.sh
 # custom env variables
 [ -f "$HOME"/.zshenv ] && source "$HOME"/.zshenv
 
-# neofetch
-[ -d "$HOME"/.config/neofetch ] && neofetch
+# fastfetch
+[ -d "$HOME"/.config/fastfetch ] && fastfetch
